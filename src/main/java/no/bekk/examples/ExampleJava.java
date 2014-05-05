@@ -1,4 +1,4 @@
-package example;
+package no.bekk.examples;
 
 import java.util.List;
 import java.util.stream.Collectors;
