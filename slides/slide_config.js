@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
+    title: 'Java 8 vs. Scala',
+    subtitle: 'Presentation with Hands-on',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
@@ -22,12 +22,12 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title<br>Google',
-    gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
+    name: 'Frithjof Nerdrum & Matias Vinjevoll',
+    company: 'BEKK',
+    gplus: '',
+    twitter: '',
+    www: '',
+    github: ''
   }/*, {
     name: 'Second Name',
     company: 'Job Title, Google',
