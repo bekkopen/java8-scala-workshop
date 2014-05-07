@@ -114,7 +114,7 @@ val høyestPris =
 <pre class="prettyprint" data-lang="Java 8">
 double høyestPris =
   biler.filter(new Predicate&lt;Bil&gt;() {
-    public boolean op(Bil b) {
+    public boolean test(Bil b) {
       return b.getÅr() == 2013;
     }
   }).map(new Mapper&lt;Bil,Double&gt;() {
@@ -204,8 +204,45 @@ val høyestPris =
         </article>
     </slide>
 
+    <slide>
+        <hgroup>
+            <h2>Default Methods</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>New functionality to interfaces</li>
+                <li>Retain binary compatibility with code using old versions of interfaces</li>
+            </ul>
+            <pre class="prettyprint" data-lang="Java 8">
+public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
 
+  ...
 
+  <b>default</b> Stream&lt;E&gt; parallelStream() {
+    return StreamSupport.stream(spliterator(), true);
+  }
+}
+            </pre>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Functional Interfaces</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Single-method interface</li>
+                <li>Many predefined functional interfaces in the <code>java.util.function</code> package</li>
+            </ul>
+            <pre class="prettyprint" data-lang="Java 8">
+@FunctionalInterface
+public interface Function2&lt;A,B,R&gt; {
+    public R apply(A a, B b);
+}
+            </pre>
+        </article>
+    </slide>
 
     <slide class="thank-you-slide segue nobackground">
         <aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>

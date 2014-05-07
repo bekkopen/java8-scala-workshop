@@ -22,3 +22,7 @@ slides > slide:not(.nobackground):before {
 slides slide.thank-you-slide {
     background: #343434 !important;
 }
+
+slides code {
+    color: #797979;
+}
