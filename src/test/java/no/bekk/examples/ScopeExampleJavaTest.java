@@ -1,7 +1,14 @@
 package no.bekk.examples;
 
-/**
- * Created by matias vinjevoll on 08/05/14.
- */
-public class ScopeExampleJavaTest {
+import junit.framework.TestCase;
+import org.junit.Test;
+
+public class ScopeExampleJavaTest extends TestCase {
+
+    @Test
+    public void testScope() {
+        ScopeExampleJava scopeExample = new ScopeExampleJava();
+        scopeExample.scope();
+        scopeExample.closure();
+    }
 }
