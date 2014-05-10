@@ -91,10 +91,8 @@ URL: https://code.google.com/p/io-2012-slides
 <pre class="prettyprint" data-lang="Java 7">
 double høyestPris = 0.0;
 for (Bil bil : biler) {
-  if (bil.getÅr() == 2013) {
-    if (bil.getPris() > høyestPris ) {
+  if (bil.getÅr() == 2013 && bil.getPris() > høyestPris) {
       høyestPris = car.getPris();
-    }
   }
 }
 </pre>
