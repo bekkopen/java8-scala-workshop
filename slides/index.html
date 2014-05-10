@@ -80,6 +80,25 @@ URL: https://code.google.com/p/io-2012-slides
         </article>
     </slide>
 
+    <slide>
+        <hgroup>
+            <h2>Streams</h2>
+
+            <h3>Java 8 vs. Scala</h3>
+        </hgroup>
+        <article>
+<pre class="prettyprint" data-lang="Java 8">
+myCollection.stream().filter(...).map(...).max();
+
+myCollection.parallelStream().filter(...).map(...).max();
+</pre>
+<pre class="prettyprint" data-lang="Scala">
+myCollection.stream.filter(...).map(...).max
+
+myCollection.par.filter(...).map(...).max
+</pre>
+        </article>
+    </slide>
 
     <slide>
         <hgroup>
@@ -183,30 +202,6 @@ val høyestPris =
 
     <slide>
         <hgroup>
-            <h2>Lambda Expressions</h2>
-
-            <h3>Parallel Execution</h3>
-        </hgroup>
-        <article>
-<pre class="prettyprint" data-lang="Java 8">
-double høyestPris =
-  biler.<b>parallel()</b>
-    .filter(Bil::getÅr == 2013)
-    .map(Bil::getPris)
-    .max();
-</pre>
-<pre class="prettyprint" data-lang="Scala">
-val høyestPris =
-  biler.<b>par</b>
-    .filter(_.år == 2013)
-    .map(_.pris)
-    .max
-</pre>
-        </article>
-    </slide>
-
-    <slide>
-        <hgroup>
             <h2>Default Methods</h2>
         </hgroup>
         <article>
@@ -224,6 +219,63 @@ public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
   }
 }
             </pre>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Default Methods in Interfaces vs. Traits</h2>
+        </hgroup>
+        <article>
+            <table>
+                <tr>
+                    <th width="1em">Functionality</th><th width="1em">Interface with default methods</th><th width="1em">Traits</th>
+                </tr>
+                <tr>
+                    <td>Behaviour</td><td class="greenhighlight">Yes</td><td class="greenhighlight">Yes</td>
+                </tr>
+                <tr>
+                    <td>State</td><td class="redhighlight">No</td><td class="greenhighlight">Yes</td>
+                </tr>
+                <tr>
+                    <td>Self reference</td><td class="redhighlight">No</td><td class="greenhighlight">Yes</td>
+                </tr>
+            </table>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Traits</h2>
+
+            <h3>Cache Example</h3>
+        </hgroup>
+        <article class="smaller">
+<pre class="prettyprint" data-lang="Scala">
+case class StrigCache() extends Retrievable[String] with Cache[String] {
+  def retrieve = ???
+}
+
+trait Retrievable[T] {
+  def retrieve: T
+}
+
+trait Cache[T] {
+  self: Retrievable[T] =>
+
+  var value: Option[T] = None
+
+  def getValue: T = value.getOrElse {
+    value = Some(retrieve)
+    value.get
+  }
+
+  def invalidate {
+    value = None
+  }
+}
+
+</pre>
         </article>
     </slide>
 
@@ -308,6 +360,23 @@ class ClosureExampleScala {
       num = 3 // ok
       this.num = 4 // ok
     })()}}
+            </pre>
+        </article>
+    </slide>
+
+
+    <slide>
+        <hgroup>
+            <h2>Optionable</h2>
+        </hgroup>
+        <article class="smaller">
+            <ul>
+                <li></li>
+            </ul>
+            <pre class="prettyprint" data-lang="Java 8">
+            </pre>
+            <pre class="prettyprint" data-lang="Scala">
+
             </pre>
         </article>
     </slide>
