@@ -229,7 +229,7 @@ public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
         <article>
             <table>
                 <tr>
-                    <th width="1em">Functionality</th><th width="1em">Interface with default methods</th><th width="1em">Traits</th>
+                    <th width="1em" class="grayhighlight">Functionality</th><th width="1em" class="grayhighlight">Interface with default methods</th><th width="1em" class="grayhighlight">Traits</th>
                 </tr>
                 <tr>
                     <td>Behaviour</td><td class="greenhighlight">Yes</td><td class="greenhighlight">Yes</td>
@@ -307,11 +307,11 @@ public interface Function2&lt;A,B,R&gt; {
             </ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ScopeExampleJava {
-    @FunctionalInterface interface VoidFunction { public void apply();}
+    @FunctionalInterface interface Function0 { public void apply();}
     private int num = 1;
     void scope() {
         int num = 2;
-        VoidFunction fun = () -> {
+        Function0 fun = () -> {
             //int num = 3; //Causes compile time error
         }; fun.apply();}}
             </pre>
@@ -338,11 +338,11 @@ class ScopeExampleScala {
             </ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ClosureExampleJava {
-    @FunctionalInterface interface VoidFunction { public void apply();}
+    @FunctionalInterface interface Function0 { public void apply();}
     private int num = 1;
     void closure() {
         int num = 2;
-        VoidFunction fun = () -> {
+        Function0 fun = () -> {
             System.out.println(num); // prints 2
             System.out.println(this.num); // prints 3
             this.num = 3; // ok

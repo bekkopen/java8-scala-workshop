@@ -44,3 +44,13 @@ table td.redhighlight {
     background: -o-linear-gradient(top, #d50c00 40%, #d50c00 80%) no-repeat;
     background: linear-gradient(top, #d50c00 40%, #d50c00 80%) no-repeat;
 }
+
+table th.grayhighlight {
+    color: white;
+    font-size: 18px;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #424242), color-stop(80%, #424242)) no-repeat;
+    background: -webkit-linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
+    background: -moz-linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
+    background: -o-linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
+    background: linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
+}

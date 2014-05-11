@@ -1,4 +1,4 @@
-package no.bekk.examples;
+package no.bekk.java.examples;
 
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ExampleJavaTest extends TestCase {
+public class ExampleTest extends TestCase {
 
     class Car {
         private String brand;
@@ -35,7 +35,7 @@ public class ExampleJavaTest extends TestCase {
         System.out.println(cars.toString());
         System.out.println(cars.lenghts());
         System.out.println((new Car("Audi", 2000)));
-        List<Integer> doubled = ExampleJava.doubleNumbers(numbers);
+        List<Integer> doubled = Example.doubleNumbers(numbers);
         assertThat("Should double all values in a list", doubled, is(Arrays.asList(2, 4, 6)));
     }
 }

@@ -1,8 +1,8 @@
-package no.bekk.examples;
+package no.bekk.java.examples;
 
-public class ScopeExampleJava {
+public class ScopeAndClosures {
     @FunctionalInterface
-    interface VoidFunction {
+    interface Function0 {
         public void apply();
     }
 
@@ -10,7 +10,7 @@ public class ScopeExampleJava {
 
     void closure() {
         int num = 2;
-        VoidFunction fun = () -> {
+        Function0 fun = () -> {
             System.out.println(num); // prints 2
             System.out.println(this.num); // prints 3
             this.num = 3; // ok
@@ -19,7 +19,7 @@ public class ScopeExampleJava {
 
     void scope() {
         int num = 2;
-        VoidFunction fun = () -> {
+        Function0 fun = () -> {
             //int num = 3; //Causes compile time error
         }; fun.apply();}
 }

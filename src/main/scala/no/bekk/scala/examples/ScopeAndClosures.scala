@@ -1,6 +1,6 @@
-package no.bekk.examples
+package no.bekk.scala.examples
 
-class ScopeExampleScala {
+class ScopeAndClosures {
   var num = 1
 
   def closure {

@@ -1,4 +1,4 @@
-package no.bekk.examples
+package no.bekk.scala.examples
 
 case class StrigCache() extends Retrievable[String] with Cache[String] {
   def retrieve = ???

@@ -1,4 +1,4 @@
-package no.bekk.examples;
+package no.bekk.java.examples;
 
 import java.util.ArrayList;
 

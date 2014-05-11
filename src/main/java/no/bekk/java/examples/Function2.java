@@ -1,4 +1,4 @@
-package no.bekk.examples;
+package no.bekk.java.examples;
 
 @FunctionalInterface
 public interface Function2<A,B,R> {
