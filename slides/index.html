@@ -28,65 +28,148 @@ URL: https://code.google.com/p/io-2012-slides
 
 <slides class="layout-widescreen">
 
-    <slide class="title-slide segue nobackground">
-        <aside class="gdbar"><img src="images/BEKK_logo.png"></aside>
-        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
-        <hgroup class="auto-fadein">
-            <h1 data-config-title><!-- populated from slide_config.json --></h1>
+<slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/BEKK_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+        <h1 data-config-title><!-- populated from slide_config.json --></h1>
 
-            <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+        <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
 
-            <p data-config-presenter><!-- populated from slide_config.json --></p>
-        </hgroup>
-    </slide>
+        <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Outline</h2>
-        </hgroup>
-        <article>
-            <ul>
-                <li>Lambda expressions</li>
-                <li>Streams</li>
-                <li>Virtual Extension Methods and Traits</li>
-            </ul>
-        </article>
-    </slide>
+<slide>
+    <hgroup>
+        <h2>Outline</h2>
+    </hgroup>
+    <article>
+        <ul>
+            <li>Lambda expressions</li>
+            <li>Streams</li>
+            <li>Virtual Extension Methods and Traits</li>
+        </ul>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Motivation</h2>
-        </hgroup>
-        <article>
-            <ul>
-                <li>Concurrency</li>
-                <li>Less error prone</li>
-                <li>Higher abstraction level</li>
-                <li>Concise code</li>
-            </ul>
-        </article>
-    </slide>
+<slide>
+    <hgroup>
+        <h2>Motivation</h2>
+    </hgroup>
+    <article>
+        <ul>
+            <li>Concurrency</li>
+            <li>Less error prone</li>
+            <li>Higher abstraction level</li>
+            <li>Concise code</li>
+        </ul>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Outline</h2>
-        </hgroup>
-        <article>
-            <ul>
-                <li class="outlineHighlight">Lambda expressions</li>
-                <li>Streams</li>
-                <li>Virtual Extension Methods and Traits</li>
-            </ul>
-        </article>
-    </slide>
+<slide>
+    <hgroup>
+        <h2>Outline</h2>
+    </hgroup>
+    <article>
+        <ul>
+            <li class="outlineHighlight">Lambda expressions</li>
+            <li>Streams</li>
+            <li>Virtual Extension Methods and Traits</li>
+        </ul>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Streams</h2>
+<slide>
+    <hgroup>
+        <h2>Default Methods</h2>
+    </hgroup>
+    <article>
+        <ul>
+            <li>New functionality to interfaces</li>
+            <li>Retain binary compatibility with code using old versions of interfaces</li>
+        </ul>
+            <pre class="prettyprint" data-lang="Java 8">
 
-            <h3>Java 8 vs. Scala</h3>
-        </hgroup>
-        <article>
+            </pre>
+    </article>
+</slide><slide>
+    <hgroup>
+        <h2>Default Methods</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="Java 8">
+public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
+
+  ...
+
+   <b>default</b> Stream&lt;E&gt; stream() {
+       return StreamSupport.stream(spliterator(), false);
+   }
+}
+            </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+        <h2>Functional Interfaces</h2>
+    </hgroup>
+    <article>
+        <ul>
+            <li>Single-method interface</li>
+            <li>Many predefined functional interfaces in the <code>java.util.function</code> package</li>
+        </ul>
+            <pre class="prettyprint" data-lang="Java 8">
+@FunctionalInterface
+public interface MyFunctionalInterface&lt;I, O&gt; {
+    public O apply(I i);
+}
+            </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+        <h2>Lambdas</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="Java 8">
+@FunctionalInterface
+public interface MyFunctionalInterface&lt;I, O&gt; {
+    public O apply(I i);
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Java 8">
+MyFunctionalInterface&lt;String, Integer&gt; fn1 =
+    new MyFunctionalInterface&lt;String, Integer&gt;() {
+        @Override
+        public Integer apply(String s) {
+            return Integer.valueOf(s);
+        }
+    };
+MyFunctionalInterface<String, Integer> fn2 = (String a) -> {return Integer.valueOf(a);};
+MyFunctionalInterface<String, Integer> fn3 = (String a) -> Integer.valueOf(a);
+MyFunctionalInterface<String, Integer> fn4 = (a) -> Integer.valueOf(a);
+MyFunctionalInterface<String, Integer> fn5 = a -> Integer.valueOf(a);
+MyFunctionalInterface<String, Integer> fn6 = Integer::valueOf;
+            </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+        <h2>Streams</h2>
+
+        <h3>Java 8 vs. Scala</h3>
+         <br/>
+        <ul>
+            <li>Source</li>
+            <li>Intermediate Operation(s)</li>
+            <li>Terminal Operation</li>
+        </ul>
+    </hgroup>
+    <article>
 <pre class="prettyprint" data-lang="Java 8">
 myCollection.stream().filter(...).map(...).max();
 
@@ -97,16 +180,65 @@ myCollection.stream.filter(...).map(...).max
 
 myCollection.par.filter(...).map(...).max
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Lambda Expressions</h2>
+<slide>
+    <hgroup>
+        <h2>Streams Operations</h2>
+    </hgroup>
+    <article class="smaller">
+        <table>
+            <tr>
+                <th>Intermediate Operations</th><th>Terminal Operations</th>
+            </tr>
+            <tr>
+                <td>filter</td><td>forEach</td>
+            </tr>
+            <tr>
+                <td>map</td><td>toArray</td>
+            </tr>
+            <tr>
+                <td>flatMap</td><td>reduce</td>
+            </tr>
+            <tr>
+                <td>peak</td><td>collect</td>
+            </tr>
+            <tr>
+                <td>distinct</td><td>min</td>
+            </tr>
+            <tr>
+                <td>sorted</td><td>max</td>
+            </tr>
+            <tr>
+                <td>limit</td><td>count</td>
+            </tr>
+            <tr>
+                <td>skip</td><td>anyMatch</td>
+            </tr>
+            <tr>
+                <td></td><td>allMatch</td>
+            </tr>
+            <tr>
+                <td></td><td>noneMatch</td>
+            </tr>
+            <tr>
+                <td></td><td>findFirst</td>
+            </tr>
+            <tr>
+                <td></td><td>findAny</td>
+            </tr>
+        </table>
+    </article>
+</slide>
 
-            <h3>Java 7 vs. Scala</h3>
-        </hgroup>
-        <article>
+<slide>
+    <hgroup>
+        <h2>Lambda Expressions</h2>
+
+        <h3>Java 7 vs. Scala</h3>
+    </hgroup>
+    <article>
 <pre class="prettyprint" data-lang="Java 7">
 double høyestPris = 0.0;
 for (Bil bil : biler) {
@@ -121,16 +253,16 @@ val høyestPris =
       .map(b => b.pris)
       .max
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Lambda Expressions</h2>
+<slide>
+    <hgroup>
+        <h2>Lambda Expressions</h2>
 
-            <h3>Anonymous Classes</h3>
-        </hgroup>
-        <article>
+        <h3>Anonymous Classes</h3>
+    </hgroup>
+    <article>
 <pre class="prettyprint" data-lang="Java 8">
 double høyestPris =
   biler.filter(new Predicate&lt;Bil&gt;() {
@@ -149,17 +281,17 @@ val høyestPris =
       .map(b => b.pris)
       .max
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
 
-    <slide>
-        <hgroup>
-            <h2>Lambda Expressions</h2>
+<slide>
+    <hgroup>
+        <h2>Lambda Expressions</h2>
 
-            <h3>Lambda in Java 8</h3>
-        </hgroup>
-        <article>
+        <h3>Lambda in Java 8</h3>
+    </hgroup>
+    <article>
 <pre class="prettyprint" data-lang="Java 8">
 double høyestPris =
   biler.filter(b -> b.getÅr() == 2013)
@@ -172,18 +304,17 @@ val høyestPris =
       .map(b => b.pris)
       .max
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
 
+<slide>
+    <hgroup>
+        <h2>Lambda Expressions</h2>
 
-    <slide>
-        <hgroup>
-            <h2>Lambda Expressions</h2>
-
-            <h3>Method Reference</h3>
-        </hgroup>
-        <article>
+        <h3>Method Reference</h3>
+    </hgroup>
+    <article>
 <pre class="prettyprint" data-lang="Java 8">
 double høyestPris =
   biler.filter(Bil::getÅr == 2013)
@@ -196,61 +327,49 @@ val høyestPris =
     .map(_.pris)
     .max
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
 
-    <slide>
-        <hgroup>
-            <h2>Default Methods</h2>
-        </hgroup>
-        <article>
-            <ul>
-                <li>New functionality to interfaces</li>
-                <li>Retain binary compatibility with code using old versions of interfaces</li>
-            </ul>
-            <pre class="prettyprint" data-lang="Java 8">
-public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
 
-  ...
 
-  <b>default</b> Stream&lt;E&gt; parallelStream() {
-    return StreamSupport.stream(spliterator(), true);
-  }
-}
-            </pre>
-        </article>
-    </slide>
+<slide>
+    <hgroup>
+        <h2>Default Methods in Interfaces vs. Traits</h2>
+    </hgroup>
+    <article>
+        <table>
+            <tr>
+                <th width="1em" class="grayhighlight">Functionality</th>
+                <th width="1em" class="grayhighlight">Interface with default methods</th>
+                <th width="1em" class="grayhighlight">Traits</th>
+            </tr>
+            <tr>
+                <td>Behaviour</td>
+                <td class="greenhighlight">Yes</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td class="redhighlight">No</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+            <tr>
+                <td>Self reference</td>
+                <td class="redhighlight">No</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+        </table>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Default Methods in Interfaces vs. Traits</h2>
-        </hgroup>
-        <article>
-            <table>
-                <tr>
-                    <th width="1em" class="grayhighlight">Functionality</th><th width="1em" class="grayhighlight">Interface with default methods</th><th width="1em" class="grayhighlight">Traits</th>
-                </tr>
-                <tr>
-                    <td>Behaviour</td><td class="greenhighlight">Yes</td><td class="greenhighlight">Yes</td>
-                </tr>
-                <tr>
-                    <td>State</td><td class="redhighlight">No</td><td class="greenhighlight">Yes</td>
-                </tr>
-                <tr>
-                    <td>Self reference</td><td class="redhighlight">No</td><td class="greenhighlight">Yes</td>
-                </tr>
-            </table>
-        </article>
-    </slide>
+<slide>
+    <hgroup>
+        <h2>Traits</h2>
 
-    <slide>
-        <hgroup>
-            <h2>Traits</h2>
-
-            <h3>Cache Example</h3>
-        </hgroup>
-        <article class="smaller">
+        <h3>Cache Example</h3>
+    </hgroup>
+    <article class="smaller">
 <pre class="prettyprint" data-lang="Scala">
 case class StrigCache() extends Retrievable[String] with Cache[String] {
   def retrieve = ???
@@ -276,35 +395,18 @@ trait Cache[T] {
 }
 
 </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Functional Interfaces</h2>
-        </hgroup>
-        <article>
-            <ul>
-                <li>Single-method interface</li>
-                <li>Many predefined functional interfaces in the <code>java.util.function</code> package</li>
-            </ul>
-            <pre class="prettyprint" data-lang="Java 8">
-@FunctionalInterface
-public interface Function2&lt;A,B,R&gt; {
-    public R apply(A a, B b);
-}
-            </pre>
-        </article>
-    </slide>
 
-    <slide>
-        <hgroup>
-            <h2>Scope</h2>
-        </hgroup>
-        <article class="smaller">
-            <ul>
-                <li></li>
-            </ul>
+<slide>
+    <hgroup>
+        <h2>Scope</h2>
+    </hgroup>
+    <article class="smaller">
+        <ul>
+            <li></li>
+        </ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ScopeExampleJava {
     @FunctionalInterface interface Function0 { public void apply();}
@@ -325,17 +427,17 @@ class ScopeExampleScala {
       println(num) // prints 3
     })()}}
             </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
-    <slide>
-        <hgroup>
-            <h2>Closures</h2>
-        </hgroup>
-        <article class="smaller">
-            <ul>
-                <li></li>
-            </ul>
+<slide>
+    <hgroup>
+        <h2>Closures</h2>
+    </hgroup>
+    <article class="smaller">
+        <ul>
+            <li></li>
+        </ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ClosureExampleJava {
     @FunctionalInterface interface Function0 { public void apply();}
@@ -361,39 +463,41 @@ class ClosureExampleScala {
       this.num = 4 // ok
     })()}}
             </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
 
-    <slide>
-        <hgroup>
-            <h2>Optionable</h2>
-        </hgroup>
-        <article class="smaller">
-            <ul>
-                <li></li>
-            </ul>
+<slide>
+    <hgroup>
+        <h2>Optionable</h2>
+    </hgroup>
+    <article class="smaller">
+        <ul>
+            <li></li>
+        </ul>
             <pre class="prettyprint" data-lang="Java 8">
             </pre>
             <pre class="prettyprint" data-lang="Scala">
 
             </pre>
-        </article>
-    </slide>
+    </article>
+</slide>
 
 
-    <slide class="thank-you-slide segue nobackground">
-        <aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>
-        <article class="flexbox vleft auto-fadein">
-            <h2>Thank You!</h2>
-            <p>Source: <a href="https://github.com/matiasvinjevoll/java8-scala-workshop">https://github.com/matiasvinjevoll/java8-scala-workshop</a></p>
-        </article>
-        <p class="auto-fadein" data-config-contact>
-            <!-- populated from slide_config.json -->
+<slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+        <h2>Thank You!</h2>
+
+        <p>Source: <a href="https://github.com/matiasvinjevoll/java8-scala-workshop">https://github.com/matiasvinjevoll/java8-scala-workshop</a>
         </p>
-    </slide>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+        <!-- populated from slide_config.json -->
+    </p>
+</slide>
 
-    <slide class="backdrop"></slide>
+<slide class="backdrop"></slide>
 
 </slides>
 
