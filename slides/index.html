@@ -90,7 +90,11 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Retain binary compatibility with code using old versions of interfaces</li>
         </ul>
             <pre class="prettyprint" data-lang="Java 8">
-
+interface Rectangle {
+    Integer width();
+    Integer height();
+    <b>default</b> Integer surface() { return width() * height();}
+}
             </pre>
     </article>
 </slide><slide>
@@ -108,6 +112,71 @@ public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
    }
 }
             </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+        <h2>Default Methods in Interfaces vs. Traits</h2>
+    </hgroup>
+    <article>
+        <table>
+            <tr>
+                <th width="1em" class="grayhighlight">Functionality</th>
+                <th width="1em" class="grayhighlight">Interface with default methods</th>
+                <th width="1em" class="grayhighlight">Traits</th>
+            </tr>
+            <tr>
+                <td>Behaviour</td>
+                <td class="greenhighlight">Yes</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td class="redhighlight">No</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+            <tr>
+                <td>Self reference</td>
+                <td class="redhighlight">No</td>
+                <td class="greenhighlight">Yes</td>
+            </tr>
+        </table>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+        <h2>Traits</h2>
+
+        <h3>Cache Example</h3>
+    </hgroup>
+    <article class="smaller">
+<pre class="prettyprint" data-lang="Scala">
+case class StrigCache() extends Retrievable[String] with Cache[String] {
+  def retrieve = ???
+}
+
+trait Retrievable[T] {
+  def retrieve: T
+}
+
+trait Cache[T] {
+  self: Retrievable[T] =>
+
+  var value: Option[T] = None
+
+  def getValue: T = value.getOrElse {
+    value = Some(retrieve)
+    value.get
+  }
+
+  def invalidate {
+    value = None
+  }
+}
+
+</pre>
     </article>
 </slide>
 
@@ -236,22 +305,32 @@ myCollection.par.filter(...).map(...).max
     <hgroup>
         <h2>Lambda Expressions</h2>
 
-        <h3>Java 7 vs. Scala</h3>
+        <h3>Java 7 vs. Java 8</h3>
+        <ul>
+            <li>public Car(String brand, Double price)</li>
+            <li>Return list of brands sorted by price</li>
+        </ul>
     </hgroup>
-    <article>
+    <article class="smaller">
 <pre class="prettyprint" data-lang="Java 7">
-double høyestPris = 0.0;
-for (Bil bil : biler) {
-  if (bil.getÅr() == 2013 && bil.getPris() > høyestPris) {
-      høyestPris = car.getPris();
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  List&lt;Car&gt; carsSortedByPrice = new ArrayList&lt;&gt;(); List&lt;String&gt; brands = new ArrayList&lt;&gt;();
+  for (Car car : cars) {
+    int i = 0;
+    while (i &lt; carsSortedByPrice.size() && carsSortedByPrice.get(i).getPrice() &lt; car.getPrice()) i++;
+    carsSortedByPrice.add(i, car);
+    brands.add(i, car.getBrand());
   }
+  return brands;
 }
 </pre>
-<pre class="prettyprint" data-lang="Scala">
-val høyestPris =
-  biler.filter(b => b.år == 2013)
-      .map(b => b.pris)
-      .max
+<pre class="prettyprint" data-lang="Java 8">
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  return cars.stream()
+               .sorted(comparing(Car::getPrice))
+               .map(Car::getBrand)
+               .collect(toList());
+}
 </pre>
     </article>
 </slide>
@@ -333,70 +412,9 @@ val høyestPris =
 
 
 
-<slide>
-    <hgroup>
-        <h2>Default Methods in Interfaces vs. Traits</h2>
-    </hgroup>
-    <article>
-        <table>
-            <tr>
-                <th width="1em" class="grayhighlight">Functionality</th>
-                <th width="1em" class="grayhighlight">Interface with default methods</th>
-                <th width="1em" class="grayhighlight">Traits</th>
-            </tr>
-            <tr>
-                <td>Behaviour</td>
-                <td class="greenhighlight">Yes</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-            <tr>
-                <td>State</td>
-                <td class="redhighlight">No</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-            <tr>
-                <td>Self reference</td>
-                <td class="redhighlight">No</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-        </table>
-    </article>
-</slide>
 
-<slide>
-    <hgroup>
-        <h2>Traits</h2>
 
-        <h3>Cache Example</h3>
-    </hgroup>
-    <article class="smaller">
-<pre class="prettyprint" data-lang="Scala">
-case class StrigCache() extends Retrievable[String] with Cache[String] {
-  def retrieve = ???
-}
 
-trait Retrievable[T] {
-  def retrieve: T
-}
-
-trait Cache[T] {
-  self: Retrievable[T] =>
-
-  var value: Option[T] = None
-
-  def getValue: T = value.getOrElse {
-    value = Some(retrieve)
-    value.get
-  }
-
-  def invalidate {
-    value = None
-  }
-}
-
-</pre>
-    </article>
-</slide>
 
 
 <slide>
