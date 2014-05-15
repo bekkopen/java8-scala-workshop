@@ -1,3 +1,5 @@
 package no.bekk.scala.model
 
-case class Player()
+import java.time.LocalDate
+
+case class Player(name: String, birthDate: LocalDate)

@@ -16,6 +16,18 @@ public class Team {
         this.players = players;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Long getValue() {
+        return value;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     @Override
     public String toString() {
         return name + ": [" + players.stream().map(Player::toString).collect(joining(", ")) + "]";

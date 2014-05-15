@@ -1,3 +1,3 @@
 package no.bekk.scala.model
 
-case class Team(players: List[Player])
+case class Team(name: String, value: Long, players: List[Player])

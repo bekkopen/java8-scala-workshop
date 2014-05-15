@@ -14,8 +14,16 @@ public class League {
         this.teams = teams;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
     @Override
     public String toString() {
-        return name + ": [" + teams.stream().map(Team::toString).collect(joining(", ")) + "]";
+        return name + ": " + teams.stream().map(Team::toString).collect(joining(", ", "[", "]"));
     }
 }
