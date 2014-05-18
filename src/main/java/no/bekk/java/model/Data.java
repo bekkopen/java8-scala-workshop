@@ -36,7 +36,7 @@ public final class Data {
                                 new Player("Diego Costa", LocalDate.of(1988, 10, 7)),
                                 new Player("David Villa", LocalDate.of(1981, 12, 3)))))),
                 new League("Bundesliga", asList(
-                        new Team("Bayern München", 1850_000_000L, asList(
+                        new Team("Bayern München", 1_850_000_000L, asList(
                                 new Player("Franck Ribéry", LocalDate.of(1983, 4, 7)),
                                 new Player("Arjen Robben", LocalDate.of(1984, 1, 23)),
                                 new Player("Philipp Lahm", LocalDate.of(1983, 11, 11)))),

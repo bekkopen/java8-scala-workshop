@@ -8,7 +8,6 @@ import no.bekk.java.model.Team;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +22,15 @@ public class LambdaTest extends TestCase {
 	public void testTeamWithHighestValue() {
 		Optional<Team> team = Lambda.teamWithHighestValue(leagues.get(0).teams);
 		assertThat("Team with highestValue", team.get().name, is("Manchester United"));
+	}
+
+	@Test
+	public void testSumValuesOfTeams() {
+		List<Long> values = Lambda.sumValuesOfTeams(leagues);
+
+		assertThat(4_831_000_000L, is(values.get(0)));
+		assertThat(6_968_000_000L, is(values.get(1)));
+		assertThat(3_030_000_000L, is(values.get(2)));
 	}
 
 	@Test
