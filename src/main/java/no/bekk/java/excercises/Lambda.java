@@ -5,13 +5,52 @@ import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static java.util.stream.Collectors.*;
 
 public class Lambda {
+
+	/**
+	 * Lambda on collections
+	 */
+
+	static void sortByAgeAndThenName(final List<Player> players) {
+		players.sort(Comparator.comparing(Player::getBirthday).reversed().thenComparing(Player::getName));
+	}
+
+	static List<Team> addValueToEachTeam(Double percent, List<Team> teams) {
+		List<Team> result = new ArrayList<>(teams.size());
+		teams.forEach(team -> {
+			result.add(new Team(team.name, team.value * (percent + 1), team.players));
+		});
+		return result;
+	}
+
+	/**
+	 * Lambda using stream
+	 */
+
+	/*
+	  * <p>For example, to compute the set of last names of people in each city:
+     * <pre>{@code
+     *     Map<City, Set<String>> namesByCity
+     *         = people.stream().collect(groupingBy(Person::getCity,
+     *                                              mapping(Person::getLastName, toSet())));
+     * }</pre>
+     *
+     * * <p>For example, given a stream of {@code Person}, to calculate tallest
+     * person in each city:
+     * <pre>{@code
+     *     Comparator<Person> byHeight = Comparator.comparing(Person::getHeight);
+     *     Map<City, Person> tallestByCity
+     *         = people.stream().collect(groupingBy(Person::getCity, reducing(BinaryOperator.maxBy(byHeight))));
+     * }</pre>
+	 */
+
+	static Double sumValueOfTeams(List<Team> teams) {
+		return teams.stream().collect(summingDouble(Team::getValue));
+	}
 
 	static Optional<Team> teamWithHighestValue(final List<Team> teams) {
 		return teams.stream().reduce((x, y) -> {
@@ -20,11 +59,11 @@ public class Lambda {
 		});
 	}
 
-	static List<Long> sumValuesOfTeams(final List<League> leagues) {
+	static List<Double> sumValuesOfTeams(final List<League> leagues) {
 		return leagues.stream().map(league -> league.getTeams())
 				.map(teams -> teams.stream()
 						.map(Team::getValue)
-						.reduce(0L, (x, y) -> x + y))
+						.reduce(0.0, (x, y) -> x + y))
 				.collect(toList());
 	}
 
@@ -42,5 +81,11 @@ public class Lambda {
 		result.addAll(b);
 		return result;
 	}
+
+	/**
+	 *
+	 * Lambda using parallellStream
+	 *
+	 */
 
 }

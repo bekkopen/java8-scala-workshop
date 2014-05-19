@@ -7,10 +7,10 @@ import static java.util.stream.Collectors.joining;
 public class Team {
 
     public final String name;
-    public final Long value;
+    public final Double value;
     public final List<Player> players;
 
-    public Team(String name, Long value, List<Player> players) {
+    public Team(String name, Double value, List<Player> players) {
         this.name = name;
         this.value = value;
         this.players = players;
@@ -20,7 +20,7 @@ public class Team {
         return name;
     }
 
-    public Long getValue() {
+    public Double getValue() {
         return value;
     }
 

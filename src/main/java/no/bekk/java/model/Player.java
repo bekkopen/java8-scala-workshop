@@ -12,7 +12,15 @@ public class Player {
         this.birthday = birthday;
     }
 
-    @Override
+	public String getName() {
+		return name;
+	}
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	@Override
     public String toString() {
         return name;
     }
