@@ -38,8 +38,6 @@ public class LambdaWithStreams {
 		return players.stream().filter(player -> player.name.startsWith(start)).collect(toList());
 	}
 
-
-
 	static Double sumValueOfAllTeams(List<Team> teams) {
 		return teams.stream().collect(summingDouble(Team::getValue));
 	}
@@ -57,8 +55,9 @@ public class LambdaWithStreams {
 	}
 
 
-	static List<Double> sumValuesOfEachTeams(final List<League> leagues) {
-		return leagues.stream().map(league -> league.getTeams())
+	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
+		return leagues.stream()
+				.map(league -> league.getTeams())
 				.map(teams -> teams.stream()
 						.map(Team::getValue)
 						.reduce(0.0, (x, y) -> x + y))

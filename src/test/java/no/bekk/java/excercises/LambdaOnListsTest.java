@@ -6,11 +6,11 @@ import no.bekk.java.model.Team;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static no.bekk.java.model.Data.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.not;
@@ -20,13 +20,8 @@ public class LambdaOnListsTest extends TestCase {
 
 	@Test
 	public void testRemoveCheapTeams() {
-		Team manchesterUnited = new Team("Manchester United", 2_810_000_000.0, new ArrayList<>());
-		Team liverpool = new Team("Liverpool", 691_000_000.0, new ArrayList<>());
-		Team arsenal = new Team("Arsenal", 1_330_000_000.0, new ArrayList<>());
-		Team borussiaDortmund = new Team("Borussia Dortmund", 600_000_000.0, new ArrayList<>());
-		Team atleticoMadrid = new Team("Atletico Madrid", 328_000_000.0, new ArrayList<>());
-		ArrayList<Team> teams = new ArrayList<>();
-		teams.add(manchesterUnited); teams.add(liverpool); teams.add(arsenal); teams.add(borussiaDortmund); teams.add(atleticoMadrid);
+		ArrayList<Team> teams =
+				asArrayList(manchesterUnited, liverpool, arsenal, borussiaDortmund, atleticoMadrid);
 
 		LambdaOnLists.removeCheapTeams(teams, 1_330_000_000.0);
 
@@ -36,32 +31,35 @@ public class LambdaOnListsTest extends TestCase {
 
 	@Test
 	public void testAddValueToEachTeam() {
-		List<Team> teams = asList(
-				new Team("Manchester United", 2_810_000_000.0, new ArrayList<>()),
-				new Team("Liverpool", 691_000_000.0, new ArrayList<>()),
-				new Team("Arsenal", 1_330_000_000.0, new ArrayList<>()));
+		List<Team> teams = asList(manchesterUnited, liverpool, arsenal);
 
-		List<Team> result = LambdaOnLists.addValueToEachTeam(0.05, teams);
+		List<Team> teamsWithFivePercentValueIncrease = LambdaOnLists.addValueToEachTeam(0.05, teams);
 
-		assertThat(round(result.get(0).value), is(round(2_950_500_000.0)));
-		assertThat(round(result.get(1).value), is(round(725_550_000.0)));
-		assertThat(round(result.get(2).value), is(round(1_396_500_000.0)));
+		assertThat(round(teamsWithFivePercentValueIncrease.get(0).value), is(round(2_950_500_000.0)));
+		assertThat(round(teamsWithFivePercentValueIncrease.get(1).value), is(round(725_550_000.0)));
+		assertThat(round(teamsWithFivePercentValueIncrease.get(2).value), is(round(1_396_500_000.0)));
 	}
 
 	@Test
 	public void testSortByAgeAndThenName() {
-		List<Player> players = asList(
-				new Player("Wayne Rooney", LocalDate.of(1985, 10, 24)),
-				new Player("Wayne Rooneylooney", LocalDate.of(1985, 10, 24)),
-				new Player("Juan Matta", LocalDate.of(1988, 4, 28)),
-				new Player("Robin van Persie", LocalDate.of(1983, 8, 6)));
+		Player juanMattaClone = new Player(juanMatta.name+"clone", juanMatta.birthday);
+		List<Player> players = asList(wayneRooney, juanMattaClone, danielAlves, juanMatta, diegoCosta);
 
 		LambdaOnLists.sortByAgeAndThenName(players);
 
-		assertThat(players.get(0).name, is("Juan Matta"));
-		assertThat(players.get(1).name, is("Wayne Rooney"));
-		assertThat(players.get(2).name, is("Wayne Rooneylooney"));
-		assertThat(players.get(3).name, is("Robin van Persie"));
+		assertThat(players.get(0), is(diegoCosta));
+		assertThat(players.get(1), is(juanMatta));
+		assertThat(players.get(2), is(juanMattaClone));
+		assertThat(players.get(3), is(wayneRooney));
+		assertThat(players.get(4), is(danielAlves));
+	}
+
+	private <T> ArrayList<T> asArrayList(T... elements) {
+		ArrayList<T> list = new ArrayList<>(elements.length);
+		for(T element: elements) {
+			list.add(element);
+		}
+		return list;
 	}
 
 	private BigDecimal round(Double d) {
