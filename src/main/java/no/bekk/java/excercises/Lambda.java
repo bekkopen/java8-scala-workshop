@@ -1,16 +1,9 @@
 package no.bekk.java.excercises;
 
-import no.bekk.java.model.League;
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 
-import java.time.LocalDate;
-import java.util.*;
 import java.util.function.BinaryOperator;
-import java.util.function.Predicate;
-
-import static java.util.stream.Collectors.*;
-import static java.util.Comparator.*;
 
 public class Lambda {
 

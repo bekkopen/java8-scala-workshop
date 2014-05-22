@@ -1,5 +1,7 @@
 package no.bekk.java.examples;
 
+import no.bekk.java.model.Car;
+
 import java.util.*;
 
 import static java.util.Comparator.comparing;

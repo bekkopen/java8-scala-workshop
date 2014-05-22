@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static java.util.Comparator.comparing;
+import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.toList;
 
@@ -33,7 +33,6 @@ public class LambdaWithStreams {
 		return players.stream().min(comparing(player -> Math.abs(player.getAge() - average))).get().getName();
 	}
 
-
 	static List<Player> playersWithNamesStartingWith(String start, List<Player> players) {
 		return players.stream().filter(player -> player.name.startsWith(start)).collect(toList());
 	}
@@ -53,7 +52,6 @@ public class LambdaWithStreams {
 	static Optional<Team> teamWithHighestValue(final List<Team> teams) {
 		return teams.stream().reduce(Lambda.highestTeamValueLambda);
 	}
-
 
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
 		return leagues.stream()
