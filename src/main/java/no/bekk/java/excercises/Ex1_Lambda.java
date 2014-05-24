@@ -5,10 +5,10 @@ import no.bekk.java.model.Team;
 
 import java.util.function.BinaryOperator;
 
-public class Lambda {
+public class Ex1_Lambda {
 
 	static BinaryOperator<Player> youngestPlayerLambda = (x, y) -> {
-		if (x.birthday.isAfter(y.birthday)) return x;
+		if (x.birthDate.isAfter(y.birthDate)) return x;
 		else return y;
 	};
 

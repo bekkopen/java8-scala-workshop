@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
 
-public class LambdaWithParallelStreams {
+public class Ex4_LambdaWithParallelStreams {
 
 	static List<Team> teamsWithValueHigherThan(Double value, List<Team> teams) {
 		return teams.parallelStream().filter(slowPredicate(team -> team.value > value)).collect(toList());

@@ -2,7 +2,7 @@ package no.bekk.scala.excercises
 
 import no.bekk.scala.model.{Car, SumoWrestler}
 
-object CompetingTypes {
+object Ex5_CompetingTypes {
 
 	trait Competing[T] {
 		def compete(a: T, b: T): T

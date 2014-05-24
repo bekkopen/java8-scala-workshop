@@ -9,7 +9,7 @@ interface Competing<T> {
 	T get();
 	Competing<T> competeWith(Competing<T> other);
 }
-public class CompetingTypes {
+public class Ex5_CompetingTypes {
 	static public <T> T compete(List<Competing<T>> competitors) {
 		return competitors.stream().reduce((x, y) -> x.competeWith(y)).get().get(); // TODO: Remove for excercise
 	}
@@ -30,7 +30,7 @@ class CarAdapter implements Competing<Car> {
 	}
 }
 
-// TODO: Remove for excercise
+// TODO: Remove for excercise, necessary with this example? Almost identical to CarAdapter...
 class SumoWrestlerAdapter implements Competing<SumoWrestler> {
 	private SumoWrestler sumoWrestler;
 

@@ -3,7 +3,7 @@ package no.bekk.scala.excercises
 import java.time.LocalDate
 import no.bekk.scala.model.{Player, League}
 
-object Lambda {
+object Ex2_Lambda {
 
   // TODO: Implement test
   def playersOlderThan(minAge: LocalDate, leagues: List[League]): List[Player] = {

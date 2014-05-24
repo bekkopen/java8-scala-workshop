@@ -6,11 +6,11 @@ import java.time.Period;
 public class Player {
 
     public final String name;
-    public final LocalDate birthday;
+    public final LocalDate birthDate;
 
-    public Player(String name, LocalDate birthday) {
+    public Player(String name, LocalDate birthDate) {
         this.name = name;
-        this.birthday = birthday;
+        this.birthDate = birthDate;
     }
 
 	@Override
@@ -20,7 +20,7 @@ public class Player {
 
 		Player player = (Player) o;
 
-		if (birthday != null ? !birthday.equals(player.birthday) : player.birthday != null) return false;
+		if (birthDate != null ? !birthDate.equals(player.birthDate) : player.birthDate != null) return false;
 		if (name != null ? !name.equals(player.name) : player.name != null) return false;
 
 		return true;
@@ -29,7 +29,7 @@ public class Player {
 	@Override
 	public int hashCode() {
 		int result = name != null ? name.hashCode() : 0;
-		result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+		result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
 		return result;
 	}
 
@@ -37,8 +37,8 @@ public class Player {
 		return name;
 	}
 
-	public LocalDate getBirthday() {
-		return birthday;
+	public LocalDate getBirthDate() {
+		return birthDate;
 	}
 
 	@Override
@@ -47,6 +47,6 @@ public class Player {
     }
 
 	public Integer getAge() {
-		return Period.between(birthday, LocalDate.now()).getYears();
+		return Period.between(birthDate, LocalDate.now()).getYears();
 	}
 }

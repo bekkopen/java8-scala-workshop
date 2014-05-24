@@ -14,7 +14,7 @@ import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.toList;
 
-public class LambdaWithStreams {
+public class Ex3_LambdaWithStreams {
 
 	static List<String> teamNames(List<Team> teams) {
 		return teams.stream().map(Team::getName).collect(toList());
@@ -42,15 +42,15 @@ public class LambdaWithStreams {
 	}
 
 	static Optional<Player> youngestPlayer(List<Player> players) {
-		return players.stream().reduce(Lambda.youngestPlayerLambda);
+		return players.stream().reduce(Ex1_Lambda.youngestPlayerLambda);
 	}
 
 	static Map<Integer, List<Player>> groupPlayersByBirthYear(List<Player> players) {
-		return players.stream().collect(groupingBy(player -> player.getBirthday().getYear(), mapping(p -> p, toList())));
+		return players.stream().collect(groupingBy(player -> player.getBirthDate().getYear(), mapping(p -> p, toList())));
 	}
 
 	static Optional<Team> teamWithHighestValue(final List<Team> teams) {
-		return teams.stream().reduce(Lambda.highestTeamValueLambda);
+		return teams.stream().reduce(Ex1_Lambda.highestTeamValueLambda);
 	}
 
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
@@ -65,10 +65,10 @@ public class LambdaWithStreams {
 	static List<Player> playersOlderThan(final LocalDate minAge, final List<League> leagues) {
 		return leagues.stream()
 				.map(League::getTeams)
-				.reduce(new ArrayList<>(), LambdaWithStreams::combine).stream()
+				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
 				.map(Team::getPlayers)
-				.reduce(new ArrayList<>(), LambdaWithStreams::combine).stream()
-				.filter(player -> player.birthday.isBefore(minAge))
+				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
+				.filter(player -> player.birthDate.isBefore(minAge))
 				.collect(toList());
 	}
 
