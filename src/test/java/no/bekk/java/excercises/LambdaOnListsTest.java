@@ -1,6 +1,5 @@
 package no.bekk.java.excercises;
 
-import junit.framework.TestCase;
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 import org.junit.Test;
@@ -16,7 +15,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-public class LambdaOnListsTest extends TestCase {
+public class LambdaOnListsTest {
 
 	@Test
 	public void testRemoveCheapTeams() {

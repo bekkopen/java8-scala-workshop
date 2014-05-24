@@ -1,6 +1,5 @@
 package no.bekk.java.excercises;
 
-import junit.framework.TestCase;
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 import org.junit.Test;
@@ -11,12 +10,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import static java.util.Arrays.asList;
+import static no.bekk.java.model.Data.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
-import static no.bekk.java.model.Data.*;
 
-public class LambdaWithStreamsTest extends TestCase {
+public class LambdaWithStreamsTest {
 
 	@Test
 	public void testTeamNames() {

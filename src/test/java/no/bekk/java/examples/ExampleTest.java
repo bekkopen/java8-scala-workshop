@@ -1,6 +1,5 @@
 package no.bekk.java.examples;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,7 +8,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ExampleTest extends TestCase {
+public class ExampleTest {
 
     class Car {
         private String brand;

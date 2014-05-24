@@ -1,6 +1,5 @@
 package no.bekk.java.excercises;
 
-import junit.framework.TestCase;
 import no.bekk.java.model.Team;
 import org.junit.Test;
 
@@ -12,7 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class LambdaWithParallelStreamsTest extends TestCase {
+public class LambdaWithParallelStreamsTest {
 
 	@Test
 	public void testTeamsWithValueHigherThan() {

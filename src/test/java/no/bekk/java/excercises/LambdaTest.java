@@ -1,6 +1,5 @@
 package no.bekk.java.excercises;
 
-import junit.framework.TestCase;
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 import org.junit.Test;
@@ -9,7 +8,7 @@ import static no.bekk.java.model.Data.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class LambdaTest extends TestCase {
+public class LambdaTest {
 
 	@Test
 	public void testYoungestPlayerLambda() {

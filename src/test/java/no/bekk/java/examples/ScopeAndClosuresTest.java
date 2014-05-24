@@ -1,9 +1,8 @@
 package no.bekk.java.examples;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-public class ScopeAndClosuresTest extends TestCase {
+public class ScopeAndClosuresTest {
 
     @Test
     public void testScopeAndClosure() {

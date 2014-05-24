@@ -1,13 +1,13 @@
 package no.bekk.java.excercises;
 
-import junit.framework.TestCase;
 import no.bekk.java.model.Car;
 import org.junit.Test;
+
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static java.util.Arrays.asList;
 
-public class CompetingTypesTest extends TestCase {
+public class CompetingTypesTest {
 
 	@Test
 	public void testing() {
