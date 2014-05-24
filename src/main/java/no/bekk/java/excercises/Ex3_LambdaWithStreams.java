@@ -5,10 +5,7 @@ import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
@@ -41,28 +38,26 @@ public class Ex3_LambdaWithStreams {
 		return teams.stream().collect(summingDouble(Team::getValue));
 	}
 
-	static Optional<Player> youngestPlayer(List<Player> players) {
-		return players.stream().reduce(Ex1_Lambda.youngestPlayerLambda);
+	static Player youngestPlayer(List<Player> players) {
+		return players.stream().reduce(Ex1_Lambda.youngestPlayerLambda).get();
 	}
 
 	static Map<Integer, List<Player>> groupPlayersByBirthYear(List<Player> players) {
 		return players.stream().collect(groupingBy(player -> player.getBirthDate().getYear(), mapping(p -> p, toList())));
 	}
 
-	static Optional<Team> teamWithHighestValue(final List<Team> teams) {
-		return teams.stream().reduce(Ex1_Lambda.highestTeamValueLambda);
+	static Team teamWithHighestValue(final List<Team> teams) {
+		return teams.stream().reduce(Ex1_Lambda.highestTeamValueLambda).get();
 	}
 
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
 		return leagues.stream()
-				.map(league -> league.getTeams())
-				.map(teams -> teams.stream()
-						.map(Team::getValue)
-						.reduce(0.0, (x, y) -> x + y))
+				.map(league -> league.getTeams().stream()
+						.collect(summingDouble(Team::getValue)))
 				.collect(toList());
 	}
 
-	static List<Player> playersOlderThan(final LocalDate minAge, final List<League> leagues) {
+	static List<Player> playersBornBefore(final LocalDate minAge, final List<League> leagues) {
 		return leagues.stream()
 				.map(League::getTeams)
 				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()

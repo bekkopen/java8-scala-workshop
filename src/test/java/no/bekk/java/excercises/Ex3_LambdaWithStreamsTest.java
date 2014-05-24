@@ -28,7 +28,7 @@ public class Ex3_LambdaWithStreamsTest {
 
 	@Test
 	public void testAgeOfOldestPlayer() {
-		List<Player> players = asList( wayneRooney, juanMatta, mesutOzil, olivierGiroud);
+		List<Player> players = asList(wayneRooney, juanMatta, mesutOzil, olivierGiroud);
 
 		Integer ageOfOldestPlayer = Ex3_LambdaWithStreams.ageOfOldestPlayer(players);
 
@@ -36,8 +36,17 @@ public class Ex3_LambdaWithStreamsTest {
 	}
 
 	@Test
+	public void testAverageAgeOfPlayers() {
+		List<Player> players = asList(wayneRooney, juanMatta, mesutOzil, olivierGiroud);
+
+		Double averageAge = Ex3_LambdaWithStreams.averageAgeOfPlayers(players);
+
+		assertThat(averageAge, is(26.5));
+	}
+
+	@Test
 	public void testNameOfPlayerClosestToAverage() {
-		List<Player> players = asList( wayneRooney, juanMatta, olivierGiroud, davidVilla);
+		List<Player> players = asList(wayneRooney, juanMatta, olivierGiroud, davidVilla);
 
 		String nameOfPlayerClosestToAverage = Ex3_LambdaWithStreams.nameOfPlayerClosestToAverage(players);
 
@@ -51,26 +60,7 @@ public class Ex3_LambdaWithStreamsTest {
 		List<Player> playersWithNameStartingWithM = Ex3_LambdaWithStreams.playersWithNamesStartingWith("M", players);
 
 		assertThat(playersWithNameStartingWithM, hasItems(matsHummels, marcoReus));
-	}
-
-	@Test
-	public void testYoungestPlayer() {
-		List<Player> players = asList(franckRibery, arjenRobben, philippLahm);
-
-		Optional<Player> youngestPlayer = Ex3_LambdaWithStreams.youngestPlayer(players);
-
-		assertThat(youngestPlayer.get(), is(arjenRobben));
-	}
-
-	@Test
-	public void testGroupPlayersByBirthYear() {
-		List<Player> players = asList( wayneRooney, juanMatta, mesutOzil, olivierGiroud);
-
-		Map<Integer, List<Player>> groupedPlayers = Ex3_LambdaWithStreams.groupPlayersByBirthYear(players);
-
-		assertThat(groupedPlayers.get(1988), hasItems(mesutOzil, juanMatta));
-		assertThat(groupedPlayers.get(1985), hasItems(wayneRooney));
-		assertThat(groupedPlayers.get(1986), hasItems(olivierGiroud));
+		assertThat(playersWithNameStartingWithM.size(), is(2));
 	}
 
 	@Test
@@ -80,13 +70,34 @@ public class Ex3_LambdaWithStreamsTest {
 		assertThat(premierLeagueTeamsValue, is(4_831_000_000.0));
 	}
 
+	@Test
+	public void testYoungestPlayer() {
+		List<Player> players = asList(franckRibery, arjenRobben, philippLahm);
 
+		Player youngestPlayer = Ex3_LambdaWithStreams.youngestPlayer(players);
+
+		assertThat(youngestPlayer, is(arjenRobben));
+	}
+
+	@Test
+	public void testGroupPlayersByBirthYear() {
+		List<Player> players = asList(wayneRooney, juanMatta, mesutOzil, olivierGiroud);
+
+		Map<Integer, List<Player>> groupedPlayers = Ex3_LambdaWithStreams.groupPlayersByBirthYear(players);
+
+		assertThat(groupedPlayers.get(1988), hasItems(mesutOzil, juanMatta));
+		assertThat(groupedPlayers.get(1988).size(), is(2));
+		assertThat(groupedPlayers.get(1985), hasItems(wayneRooney));
+		assertThat(groupedPlayers.get(1985).size(), is(1));
+		assertThat(groupedPlayers.get(1986), hasItems(olivierGiroud));
+		assertThat(groupedPlayers.get(1986).size(), is(1));
+	}
 
 	@Test
 	public void testTeamWithHighestValue() {
-		Optional<Team> teamWithHighersValueInPremierLeague = Ex3_LambdaWithStreams.teamWithHighestValue(premierLeague.teams);
+		Team teamWithHighersValueInPremierLeague = Ex3_LambdaWithStreams.teamWithHighestValue(premierLeague.teams);
 
-		assertThat(teamWithHighersValueInPremierLeague.get(), is(manchesterUnited));
+		assertThat(teamWithHighersValueInPremierLeague, is(manchesterUnited));
 	}
 
 	@Test
@@ -99,9 +110,9 @@ public class Ex3_LambdaWithStreamsTest {
 	}
 
 	@Test
-	public void testPlayersOlderThan() {
+	public void testPlayersBornBefore() {
 		LocalDate minAge = LocalDate.of(1983, 5, 30);
-		List<Player> playersOlderThanMinAge = Ex3_LambdaWithStreams.playersOlderThan(minAge, leagues);
+		List<Player> playersOlderThanMinAge = Ex3_LambdaWithStreams.playersBornBefore(minAge, leagues);
 
 		assertThat(playersOlderThanMinAge, hasItems(stevenGerrard, danielAlves, davidVilla, franckRibery, timoHildebrand));
 		assertThat(playersOlderThanMinAge.size(), is(5));
