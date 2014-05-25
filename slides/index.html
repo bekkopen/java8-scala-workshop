@@ -217,11 +217,11 @@ MyFunctionalInterface&lt;String, Integer&gt; fn1 =
             return Integer.valueOf(s);
         }
     };
-MyFunctionalInterface<String, Integer> fn2 = (String a) -> {return Integer.valueOf(a);};
-MyFunctionalInterface<String, Integer> fn3 = (String a) -> Integer.valueOf(a);
-MyFunctionalInterface<String, Integer> fn4 = (a) -> Integer.valueOf(a);
-MyFunctionalInterface<String, Integer> fn5 = a -> Integer.valueOf(a);
-MyFunctionalInterface<String, Integer> fn6 = Integer::valueOf;
+MyFunctionalInterface&lt;String, Integer&gt; fn2 = (String a) -> {return Integer.valueOf(a);};
+MyFunctionalInterface&lt;String, Integer&gt; fn3 = (String a) -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn4 = (a) -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn5 = a -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
             </pre>
     </article>
 </slide>
@@ -333,6 +333,31 @@ public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
 }
 </pre>
     </article>
+</slide>
+
+<slide>
+	<hgroup>
+		<h2>Lambda Expressions</h2>
+
+		<h3>Java 8 vs. Scala</h3>
+		<ul>
+			<li>public Car(String brand, Double price)</li>
+			<li>Return list of brands sorted by price</li>
+		</ul>
+	</hgroup>
+	<article class="smaller">
+		<pre class="prettyprint" data-lang="Java 8">
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  return cars.stream()
+               .sorted(comparing(Car::getPrice))
+               .map(Car::getBrand)
+               .collect(toList());
+}
+		</pre>
+		<pre class="prettyprint" data-lang="Scala">
+def brandsSortedByPrice(cars: List[Car]) = cars.sortBy(_.price).map(_.brand)
+		</pre>
+	</article>
 </slide>
 
 <slide>

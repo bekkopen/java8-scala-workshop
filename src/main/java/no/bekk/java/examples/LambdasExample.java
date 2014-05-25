@@ -1,13 +1,6 @@
 package no.bekk.java.examples;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class Example {
-    public static List<Integer>doubleNumbers(List<Integer> numbers){
-        return numbers.stream().map(n -> n * 2).collect(Collectors.toList());
-    }
-
+public class LambdasExample {
     MyFunctionalInterface<String, Integer> fn1 = new MyFunctionalInterface<String, Integer>() {
         @Override
         public Integer apply(String s) {
