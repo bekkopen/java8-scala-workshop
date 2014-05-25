@@ -11,7 +11,7 @@ Slides for the workshop are located in the _slides_ folder of the project.
 4. Install Scala plugin for your IDE
 5. Clone the project: `git clone git@github.com:matiasvinjevoll/java8-scala-workshop.git`
 6. Execute `mvn compile` from the project root folder
+8. Run `mvn test` to execute the tests (they should all fail)
 7. Import the project to your IDE
-8. Make the tests run (`mvn test`) 
 
 If you have any problems with the setup, please contact Matias (matias.vinjevoll(at)bekk.no) or Frithjof (frithjof.nerdrum(at)bekk.no).
