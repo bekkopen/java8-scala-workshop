@@ -10,61 +10,52 @@ import java.util.*;
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.toList;
+import static no.bekk.java.util.Utils.*;
 
 public class Ex3_LambdaWithStreams {
 
 	static List<String> teamNames(List<Team> teams) {
-		return teams.stream().map(Team::getName).collect(toList());
+		return implementThis();
 	}
 
 	static Integer ageOfOldestPlayer(List<Player> players) {
-		return players.stream().mapToInt(Player::getAge).max().getAsInt();
+		return implementThis();
 	}
 
 	static Double averageAgeOfPlayers(List<Player> players) {
-		return players.stream().mapToInt(Player::getAge).average().getAsDouble();
+		return implementThis();
 	}
 
 	static String nameOfPlayerClosestToAverage(List<Player> players) {
-		Double average = averageAgeOfPlayers(players);
-		return players.stream().min(comparing(player -> Math.abs(player.getAge() - average))).get().getName();
+		return implementThis();
 	}
 
 	static List<Player> playersWithNamesStartingWith(String start, List<Player> players) {
-		return players.stream().filter(player -> player.name.startsWith(start)).collect(toList());
+		return implementThis();
 	}
 
 	static Double sumValueOfAllTeams(List<Team> teams) {
-		return teams.stream().collect(summingDouble(Team::getValue));
+		return implementThis();
 	}
 
 	static Player youngestPlayer(List<Player> players) {
-		return players.stream().reduce(Ex1_Lambda.youngestPlayerLambda).get();
+		return implementThis();
 	}
 
 	static Map<Integer, List<Player>> groupPlayersByBirthYear(List<Player> players) {
-		return players.stream().collect(groupingBy(player -> player.getBirthDate().getYear(), mapping(p -> p, toList())));
+		return implementThis();
 	}
 
 	static Team teamWithHighestValue(final List<Team> teams) {
-		return teams.stream().reduce(Ex1_Lambda.highestTeamValueLambda).get();
+		return implementThis();
 	}
 
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
-		return leagues.stream()
-				.map(league -> league.getTeams().stream()
-						.collect(summingDouble(Team::getValue)))
-				.collect(toList());
+		return implementThis();
 	}
 
 	static List<Player> playersBornBefore(final LocalDate minAge, final List<League> leagues) {
-		return leagues.stream()
-				.map(League::getTeams)
-				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
-				.map(Team::getPlayers)
-				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
-				.filter(player -> player.birthDate.isBefore(minAge))
-				.collect(toList());
+		return implementThis();
 	}
 
 	private static <T> List<T> combine(final List<T> a, final List<T> b) {

@@ -67,7 +67,6 @@ trait KingstonMemoryContext extends MemoryContext {
  */
 object Computers {
 
-	//val computer1: ComputerContext = ??? //new ComputerContext with ...
-	val computer1: ComputerContext = new ComputerContext with IntelCpuContext with AsusMotherboardContext with CorsairMemoryContext
-	val computer2: ComputerContext = new ComputerContext with AmdCpuContext with AsusMotherboardContext with KingstonMemoryContext
+	val computer1: ComputerContext = ??? //new ComputerContext with ...
+	val computer2: ComputerContext = ??? //new ComputerContext with ...
 }

@@ -78,9 +78,9 @@ class Ex3_LambdaSpec extends FlatSpec with Matchers {
 	}
 
 	"teamWithHighestValue" should "return the team with highest value" in {
-		val teamWithHighersValueInPremierLeague= Ex3_Lambda.teamWithHighestValue(premierLeague.teams)
+		val teamWithHighestValueInPremierLeague= Ex3_Lambda.teamWithHighestValue(premierLeague.teams)
 
-		teamWithHighersValueInPremierLeague shouldBe manchesterUnited
+		teamWithHighestValueInPremierLeague shouldBe manchesterUnited
 	}
 
 	"sumValuesOfEachLeague" should "return a list containing the sum of all teams in each league" in {

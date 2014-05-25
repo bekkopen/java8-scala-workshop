@@ -94,9 +94,9 @@ public class Ex3_LambdaWithStreamsTest {
 
 	@Test
 	public void testTeamWithHighestValue() {
-		Team teamWithHighersValueInPremierLeague = Ex3_LambdaWithStreams.teamWithHighestValue(premierLeague.teams);
+		Team teamWithHighestValueInPremierLeague = Ex3_LambdaWithStreams.teamWithHighestValue(premierLeague.teams);
 
-		assertThat(teamWithHighersValueInPremierLeague, is(manchesterUnited));
+		assertThat(teamWithHighestValueInPremierLeague, is(manchesterUnited));
 	}
 
 	@Test

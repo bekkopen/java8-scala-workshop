@@ -4,8 +4,7 @@ import no.bekk.scala.model.Team
 
 object Ex4_LambdaParallel {
 
-	def teamsWithValueHigherThan(value: Double, teams: List[Team]) =
-		teams.par.filter(slowPredicate(_.value > value)).toList
+	def teamsWithValueHigherThan(value: Double, teams: List[Team]): List[Team] = ???
 
 	private def slowPredicate[A](predicate: A => Boolean): A => Boolean = x => {
 		try {
