@@ -1,4 +1,4 @@
-package no.bekk.java.excercises;
+package no.bekk.java.exercises;
 
 import no.bekk.java.model.Team;
 

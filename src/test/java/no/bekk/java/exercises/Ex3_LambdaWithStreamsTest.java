@@ -1,4 +1,4 @@
-package no.bekk.java.excercises;
+package no.bekk.java.exercises;
 
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import static java.util.Arrays.asList;
 import static no.bekk.java.model.Data.*;

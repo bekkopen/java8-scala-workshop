@@ -1,4 +1,4 @@
-package no.bekk.scala.excercises
+package no.bekk.scala.exercises
 
 trait ComputerComponent {
 	val manufacturer: String

@@ -1,4 +1,4 @@
-package no.bekk.scala.excercises
+package no.bekk.scala.exercises
 
 import org.scalatest._
 import org.junit.runner.RunWith

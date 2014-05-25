@@ -1,4 +1,4 @@
-package no.bekk.scala.excercises
+package no.bekk.scala.exercises
 
 import java.time.LocalDate
 import no.bekk.scala.model.{Team, Player, League}
