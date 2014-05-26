@@ -46,9 +46,14 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
         <ul>
-            <li>Lambda expressions</li>
-            <li>Streams</li>
-            <li>Virtual Extension Methods and Traits</li>
+			<li>Default Methods and Traits</li>
+			<li>Functional Interfaces</li>
+			<li>Lambda expressions</li>
+			<li>Streams</li>
+			<li>Lambda on streams</li>
+			<li>Optional</li>
+			<li>Scope</li>
+			<li>Closures</li>
         </ul>
     </article>
 </slide>
@@ -63,19 +68,6 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Less error prone</li>
             <li>Higher abstraction level</li>
             <li>Concise code</li>
-        </ul>
-    </article>
-</slide>
-
-<slide>
-    <hgroup>
-        <h2>Outline</h2>
-    </hgroup>
-    <article>
-        <ul>
-            <li class="outlineHighlight">Lambda expressions</li>
-            <li>Streams</li>
-            <li>Virtual Extension Methods and Traits</li>
         </ul>
     </article>
 </slide>
@@ -227,6 +219,18 @@ MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
 </slide>
 
 <slide>
+	<hgroup>
+		<h2>Exercises</h2>
+	</hgroup>
+	<article>
+		<ul>
+			<li>Ex1_Lambda</li>
+			<li>Ex2_LambdaOnLists</li>
+		</ul>
+	</article>
+</slide>
+
+<slide>
     <hgroup>
         <h2>Streams</h2>
 
@@ -361,86 +365,53 @@ def brandsSortedByPrice(cars: List[Car]) = cars.sortBy(_.price).map(_.brand)
 </slide>
 
 <slide>
-    <hgroup>
-        <h2>Lambda Expressions</h2>
-
-        <h3>Anonymous Classes</h3>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="Java 8">
-double høyestPris =
-  biler.filter(new Predicate&lt;Bil&gt;() {
-    public boolean test(Bil b) {
-      return b.getÅr() == 2013;
-    }
-  }).map(new Mapper&lt;Bil,Double&gt;() {
-    public Double extract(Bil b) {
-      return b.getPris();
-    }
-  }).max();
-</pre>
-<pre class="prettyprint" data-lang="Scala">
-val høyestPris =
-  biler.filter(b => b.år == 2013)
-      .map(b => b.pris)
-      .max
-</pre>
-    </article>
+	<hgroup>
+		<h2>Exercises</h2>
+	</hgroup>
+	<article>
+		<ul>
+			<li>Ex3_LambdaWithStreams</li>
+			<li>Ex4_LambdaWithParallelStreams</li>
+		</ul>
+	</article>
 </slide>
-
 
 <slide>
-    <hgroup>
-        <h2>Lambda Expressions</h2>
-
-        <h3>Lambda in Java 8</h3>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="Java 8">
-double høyestPris =
-  biler.filter(b -> b.getÅr() == 2013)
-    .map(b -> b.getPris())
-    .max();
-</pre>
-<pre class="prettyprint" data-lang="Scala">
-val høyestPris =
-  biler.filter(b => b.år == 2013)
-      .map(b => b.pris)
-      .max
-</pre>
-    </article>
+	<hgroup>
+		<h2>Optional</h2>
+	</hgroup>
+	<article class="smaller">
+		<ul>
+			<li>public Person(String name)</li>
+			<li>public House(Person owner)</li>
+		</ul>
+            <pre class="prettyprint" data-lang="Java 7">
+public static String getNameOfOwner(House house) {
+  if (house != null && house.owner != null && house.owner.name != null) {
+    return house.owner.name;
+  } else {
+    return "Doesn't exist";
+  }
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Java 8">
+public static String getNameOfOwner(House house) {
+  return Optional.of(house).map(h -> h.owner).map(p -> p.name).orElseGet(() -> "Doesn't exist");
+}
+            </pre>
+	</article>
 </slide>
-
 
 <slide>
-    <hgroup>
-        <h2>Lambda Expressions</h2>
-
-        <h3>Method Reference</h3>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="Java 8">
-double høyestPris =
-  biler.filter(Bil::getÅr == 2013)
-    .map(Bil::getPris)
-    .max();
-</pre>
-<pre class="prettyprint" data-lang="Scala">
-val høyestPris =
-  biler.filter(_.år == 2013)
-    .map(_.pris)
-    .max
-</pre>
-    </article>
+	<hgroup>
+		<h2>Exercises</h2>
+	</hgroup>
+	<article>
+		<ul>
+			<li>Ex5_Optional</li>
+		</ul>
+	</article>
 </slide>
-
-
-
-
-
-
-
-
 
 <slide>
     <hgroup>
@@ -488,10 +459,10 @@ public class ClosureExampleJava {
     void closure() {
         int num = 2;
         Function0 fun = () -> {
-            System.out.println(num); // prints 2
-            System.out.println(this.num); // prints 3
             this.num = 3; // ok
             //num = 4; //Causes compile time error
+            System.out.println(this.num); // prints 3
+            System.out.println(num); // prints 2
         }; fun.apply();}}
             </pre>
             <pre class="prettyprint" data-lang="Scala">
@@ -500,32 +471,26 @@ class ClosureExampleScala {
   def closure {
     var num = 2
     (() => {
-      println(num) // prints 2
-      println(this.num) // prints 1
-      num = 3 // ok
       this.num = 4 // ok
+      num = 3 // ok
+      println(this.num) // prints 4
+      println(num) // prints 3
     })()}}
             </pre>
     </article>
 </slide>
 
-
 <slide>
-    <hgroup>
-        <h2>Optionable</h2>
-    </hgroup>
-    <article class="smaller">
-        <ul>
-            <li></li>
-        </ul>
-            <pre class="prettyprint" data-lang="Java 8">
-            </pre>
-            <pre class="prettyprint" data-lang="Scala">
-
-            </pre>
-    </article>
+	<hgroup>
+		<h2>Exercises</h2>
+	</hgroup>
+	<article>
+		<ul>
+			<li>Ex6_CompetingTypes</li>
+			<li>Ex7_Computers (Scala only)</li>
+		</ul>
+	</article>
 </slide>
-
 
 <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>

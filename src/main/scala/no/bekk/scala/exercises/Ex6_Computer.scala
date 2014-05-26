@@ -23,7 +23,7 @@ trait MotherboardContext {
 
 trait ComputerContext {
 	self: MotherboardContext with CpuContext with MemoryContext =>
-	val computer = Computer(motherboard, cpu, memory)
+	lazy val computer = Computer(motherboard, cpu, memory)
 }
 
 /**
