@@ -58,9 +58,4 @@ public class Ex3_LambdaWithStreams {
 		return implementThis();
 	}
 
-	private static <T> List<T> combine(final List<T> a, final List<T> b) {
-		List<T> result = a;
-		result.addAll(b);
-		return result;
-	}
 }

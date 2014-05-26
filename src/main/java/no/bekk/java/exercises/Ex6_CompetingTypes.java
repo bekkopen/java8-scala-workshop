@@ -10,7 +10,7 @@ interface Competing<T> {
 	T get();
 	Competing<T> competeWith(Competing<T> other);
 }
-public class Ex5_CompetingTypes {
+public class Ex6_CompetingTypes {
 	static public <T> T compete(List<Competing<T>> competitors) {
 		return implementThis();
 	}
