@@ -1,7 +1,6 @@
 package no.bekk.java.exercises;
 
 import no.bekk.java.model.Car;
-import no.bekk.java.model.SumoWrestler;
 
 import java.util.List;
 
@@ -29,22 +28,6 @@ class CarAdapter implements Competing<Car> {
 	}
 
 	public Competing<Car> competeWith(Competing<Car> other) {
-		return implementThis();
-	}
-}
-
-class SumoWrestlerAdapter implements Competing<SumoWrestler> {
-	private SumoWrestler sumoWrestler;
-
-	SumoWrestlerAdapter(SumoWrestler sumoWrestler) {
-		this.sumoWrestler = sumoWrestler;
-	}
-
-	public SumoWrestler get() {
-		return implementThis();
-	}
-
-	public Competing<SumoWrestler> competeWith(Competing<SumoWrestler> other) {
-		return implementThis();
+        return implementThis();
 	}
 }

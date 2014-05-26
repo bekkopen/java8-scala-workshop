@@ -1,6 +1,6 @@
 package no.bekk.scala.exercises
 
-import no.bekk.scala.model.{Car, SumoWrestler}
+import no.bekk.scala.model.Car
 
 object Ex5_CompetingTypes {
 
@@ -9,10 +9,6 @@ object Ex5_CompetingTypes {
 	}
 
 	object Competing {
-		implicit object CompetingSumoWrestler extends Competing[SumoWrestler] {
-			def compete(a: SumoWrestler, b: SumoWrestler) = ???
-		}
-
 		implicit object CompetingCar extends Competing[Car] {
 			def compete(a: Car, b: Car) = ???
 		}

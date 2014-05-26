@@ -6,10 +6,10 @@ class ScopeAndClosures {
   def closure {
     var num = 2
     (() => {
-      println(num) // prints 2
-      println(this.num) // prints 1
-      num = 3 // ok
       this.num = 4 // ok
+      num = 3 // ok
+      println(this.num) // prints 4
+      println(num) // prints 3
     })()
   }
 
