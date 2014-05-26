@@ -5,10 +5,13 @@ import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
-import static java.util.Comparator.*;
-import static java.util.stream.Collectors.*;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.summingDouble;
 import static java.util.stream.Collectors.toList;
 
 public class Ex3_LambdaWithStreams {
@@ -53,23 +56,15 @@ public class Ex3_LambdaWithStreams {
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
 		return leagues.stream()
 				.map(league -> league.getTeams().stream()
-						.collect(summingDouble(Team::getValue)))
+                        .collect(summingDouble(Team::getValue)))
 				.collect(toList());
 	}
 
 	static List<Player> playersBornBefore(final LocalDate minAge, final List<League> leagues) {
 		return leagues.stream()
-				.map(League::getTeams)
-				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
-				.map(Team::getPlayers)
-				.reduce(new ArrayList<>(), Ex3_LambdaWithStreams::combine).stream()
-				.filter(player -> player.birthDate.isBefore(minAge))
-				.collect(toList());
-	}
-
-	private static <T> List<T> combine(final List<T> a, final List<T> b) {
-		List<T> result = a;
-		result.addAll(b);
-		return result;
+                .flatMap(league -> league.getTeams().stream())
+                .flatMap(team -> team.getPlayers().stream())
+                .filter(player -> player.birthDate.isBefore(minAge))
+                .collect(toList());
 	}
 }
