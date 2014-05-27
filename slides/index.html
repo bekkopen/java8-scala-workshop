@@ -64,9 +64,9 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
         <ul>
+            <li>Higher abstraction level</li>
             <li>Concurrency</li>
             <li>Less error prone</li>
-            <li>Higher abstraction level</li>
             <li>Concise code</li>
         </ul>
     </article>
@@ -249,7 +249,7 @@ myCollection.stream().filter(...).map(...).max();
 myCollection.parallelStream().filter(...).map(...).max();
 </pre>
 <pre class="prettyprint" data-lang="Scala">
-myCollection.stream.filter(...).map(...).max
+myCollection.toStream.filter(...).map(...).max
 
 myCollection.par.filter(...).map(...).max
 </pre>

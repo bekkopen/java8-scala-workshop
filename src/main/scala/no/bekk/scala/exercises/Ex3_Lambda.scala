@@ -30,12 +30,7 @@ object Ex3_Lambda {
 		leagues.map(_.teams.map(_.value).sum)
 
 	def playersBornBefore(date: LocalDate, leagues: List[League]): List[Player] =
-		leagues.map(_.teams)
-				.reduce(_ ::: _)
-				.map(_.players)
-				.reduce(_ ::: _)
-				.filter(_.birthDate isBefore date)
-
+		leagues.flatMap(_.teams.flatMap(_.players.filter(_.birthDate isBefore date)))
 }
 
 object ListExtensions {
