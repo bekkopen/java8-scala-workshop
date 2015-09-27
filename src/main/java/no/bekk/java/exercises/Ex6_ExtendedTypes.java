@@ -8,7 +8,7 @@ interface Competing<T> {
 	T get();
 	Competing<T> competeWith(Competing<T> other);
 }
-public class Ex6_CompetingTypes {
+public class Ex6_ExtendedTypes {
 	static public <T> T compete(List<Competing<T>> competitors) {
 		return competitors.stream().reduce((x, y) -> x.competeWith(y)).get().get(); // TODO: Remove for excercise
 	}
