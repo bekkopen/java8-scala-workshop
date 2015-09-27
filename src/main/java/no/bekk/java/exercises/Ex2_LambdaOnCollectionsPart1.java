@@ -9,7 +9,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.*;
 
-public class Ex2_LambdaPart1 {
+public class Ex2_LambdaOnCollectionsPart1 {
 
 	static List<String> teamNames(List<Team> teams) {
 		return teams.stream().map(Team::getName).collect(toList());

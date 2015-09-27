@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 import no.bekk.scala.model.{League, Player, Team}
 
-object Ex2_LambdaPart1 {
+object Ex2_LambdaOnCollectionsPart1 {
 
 	def teamNames(teams: List[Team]) = teams.map(_.name)
 

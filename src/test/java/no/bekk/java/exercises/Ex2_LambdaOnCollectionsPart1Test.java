@@ -17,20 +17,20 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-public class Ex2_LambdaPart1Test {
+public class Ex2_LambdaOnCollectionsPart1Test {
 
 	@Test
 	public void testTeamNames() {
 		List<Team> teams = asList(manchesterUnited, liverpool, arsenal);
 
-		List<String> teamNames = Ex2_LambdaPart1.teamNames(teams);
+		List<String> teamNames = Ex2_LambdaOnCollectionsPart1.teamNames(teams);
 
 		assertThat(teamNames, hasItems("Manchester United", "Liverpool", "Arsenal"));
 	}
 
 	@Test
 	public void testRemoveOldPlayers() {
-		List<Player> result = Ex2_LambdaPart1.removeOldPlayers(LocalDate.of(1984, 1, 1), bayernMunchen.players);
+		List<Player> result = Ex2_LambdaOnCollectionsPart1.removeOldPlayers(LocalDate.of(1984, 1, 1), bayernMunchen.players);
 
 		assertThat(result, hasItems(arjenRobben));
 		assertThat(result, not(hasItems(philippLahm, franckRibery)));
@@ -40,7 +40,7 @@ public class Ex2_LambdaPart1Test {
 	public void testAddValueToEachTeam() {
 		List<Team> teams = asList(manchesterUnited, liverpool, arsenal);
 
-		List<Team> teamsWithFivePercentValueIncrease = Ex2_LambdaPart1.addValueToEachTeam(0.05, teams);
+		List<Team> teamsWithFivePercentValueIncrease = Ex2_LambdaOnCollectionsPart1.addValueToEachTeam(0.05, teams);
 
 		assertThat(round(teamsWithFivePercentValueIncrease.get(0).value), is(round(2_950_500_000.0)));
 		assertThat(round(teamsWithFivePercentValueIncrease.get(1).value), is(round(725_550_000.0)));
@@ -51,7 +51,7 @@ public class Ex2_LambdaPart1Test {
 	public void testRemoveTeamsWithLowValue() {
 		List<Team> teams = new ArrayList<>(asList(manchesterUnited, liverpool, arsenal, borussiaDortmund, atleticoMadrid));
 
-		List<Team> result = Ex2_LambdaPart1.removeTeamsWithLowValue(teams, 1_330_000_000.0);
+		List<Team> result = Ex2_LambdaOnCollectionsPart1.removeTeamsWithLowValue(teams, 1_330_000_000.0);
 
 		assertThat(result, hasItems(manchesterUnited, arsenal));
 		assertThat(result, not(hasItems(liverpool, borussiaDortmund, atleticoMadrid)));
@@ -59,7 +59,7 @@ public class Ex2_LambdaPart1Test {
 
 	@Test
 	public void testSetLeagueNamesToUpperCase() {
-		List<League> result = Ex2_LambdaPart1.setLeagueNamesToUpperCase(leagues);
+		List<League> result = Ex2_LambdaOnCollectionsPart1.setLeagueNamesToUpperCase(leagues);
 
 		assertThat(result.get(0).name, is("PREMIER LEAGUE"));
 		assertThat(result.get(1).name, is("LA LIGA"));

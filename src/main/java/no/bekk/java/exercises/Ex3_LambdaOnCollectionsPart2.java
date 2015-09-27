@@ -14,7 +14,7 @@ import static java.util.AbstractMap.SimpleEntry;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.*;
 
-public class Ex3_LambdaPart2 {
+public class Ex3_LambdaOnCollectionsPart2 {
 
 	static Integer ageOfOldestPlayer(List<Player> players) {
 		return players.stream().mapToInt(player -> player.getAge()).max().getAsInt();
