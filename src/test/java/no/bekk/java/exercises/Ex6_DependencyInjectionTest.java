@@ -2,11 +2,11 @@ package no.bekk.java.exercises;
 
 import org.junit.Test;
 
-import static no.bekk.java.exercises.Ex6_Computer.*;
+import static no.bekk.java.exercises.Ex6_DependencyInjection.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class Ex6_ComputerTest {
+public class Ex6_DependencyInjectionTest {
 
 	@Test
 	public void testComputer1WithAsusMotherboardIntelCpuCorsairMemory() {
