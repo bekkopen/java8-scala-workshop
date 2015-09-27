@@ -5,6 +5,7 @@ import no.bekk.java.model.Team;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Map;
 
@@ -29,18 +30,20 @@ public class Ex3_LambdaWithStreamsTest {
 	public void testAgeOfOldestPlayer() {
 		List<Player> players = asList(wayneRooney, juanMatta, mesutOzil, olivierGiroud);
 
+		Integer expected = Period.between(LocalDate.of(1985, 10, 24), LocalDate.now()).getYears();
 		Integer ageOfOldestPlayer = Ex3_LambdaWithStreams.ageOfOldestPlayer(players);
 
-		assertThat(ageOfOldestPlayer, is(28));
+		assertThat(ageOfOldestPlayer, is(expected));
 	}
 
 	@Test
 	public void testAverageAgeOfPlayers() {
 		List<Player> players = asList(wayneRooney, juanMatta, mesutOzil, olivierGiroud);
 
+		Double expected = (wayneRooney.getAge() + juanMatta.getAge() + mesutOzil.getAge() + olivierGiroud.getAge()) / 4.0;
 		Double averageAge = Ex3_LambdaWithStreams.averageAgeOfPlayers(players);
 
-		assertThat(averageAge, is(26.5));
+		assertThat(averageAge, is(expected));
 	}
 
 	@Test

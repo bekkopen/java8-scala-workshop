@@ -4,7 +4,7 @@ import org.scalatest.{Matchers, FlatSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import no.bekk.scala.model.Data._
-import java.time.LocalDate
+import java.time.{Period, LocalDate}
 
 @RunWith(classOf[JUnitRunner])
 class Ex3_LambdaSpec extends FlatSpec with Matchers {
@@ -21,17 +21,19 @@ class Ex3_LambdaSpec extends FlatSpec with Matchers {
 	"ageOfOldestPlayer" should "return oldest player" in {
 		val players = wayneRooney :: juanMatta :: mesutOzil :: olivierGiroud :: Nil
 
+		val expected = Period.between(LocalDate.of(1985, 10, 24), LocalDate.now).getYears
 		val ageOfOldestPlayer = Ex3_Lambda.ageOfOldestPlayer(players)
 
-		ageOfOldestPlayer shouldBe 28
+		ageOfOldestPlayer shouldBe expected
 	}
 
 	"averageAgeOfPlayers" should "return average age of players" in {
 		val players = wayneRooney :: juanMatta :: mesutOzil :: olivierGiroud :: Nil
 
+		val expected = (wayneRooney.age + juanMatta.age + mesutOzil.age + olivierGiroud.age) / 4.0
 		val averageAge = Ex3_Lambda.averageAgeOfPlayers(players)
 
-		averageAge shouldBe 26.5
+		averageAge shouldBe expected
 	}
 
 	"nameOfPlayerClosestToAverage" should "return the player with age closest to average" in {
@@ -78,7 +80,7 @@ class Ex3_LambdaSpec extends FlatSpec with Matchers {
 	}
 
 	"teamWithHighestValue" should "return the team with highest value" in {
-		val teamWithHighersValueInPremierLeague= Ex3_Lambda.teamWithHighestValue(premierLeague.teams)
+		val teamWithHighersValueInPremierLeague = Ex3_Lambda.teamWithHighestValue(premierLeague.teams)
 
 		teamWithHighersValueInPremierLeague shouldBe manchesterUnited
 	}
