@@ -8,12 +8,12 @@ import java.util.Optional;
 
 public class Ex5_Optional {
 
-    static Optional<Player> youngestPlayerOlderThan(Team team, LocalDate minDate) {
+    static Optional<String> youngestPlayerNameOlderThan(Team team, LocalDate minDate) {
         return team.getPlayers().stream()
                 .filter(player -> player.birthDate.isBefore(minDate))
                 .reduce((x, y) -> {
                     if (x.birthDate.isAfter(y.birthDate)) return x;
                     else return y;
-                });
+                }).map(Player::getName);
     }
 }
