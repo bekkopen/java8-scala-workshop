@@ -1,13 +1,10 @@
 package no.bekk.scala.exercises
 
-trait ComputerComponent {
-	val manufacturer: String
-}
-case class Cpu(manufacturer: String, clockSpeed: Double) extends ComputerComponent
-case class Memory(manufacturer: String, ram: Int) extends ComputerComponent
-case class Motherboard(manufacturer: String) extends ComputerComponent
+object Ex7_Computers {
 
-case class Computer(motherboard: Motherboard, cpu: Cpu, memory: Memory)
+	def computer1: Computer = (new ComputerContext with IntelCpuContext with AsusMotherboardContext with CorsairMemoryContext).computer
+	def computer2: Computer = (new ComputerContext with AmdCpuContext with MsiMotherboardContext with KingstonMemoryContext).computer
+}
 
 trait CpuContext {
 	val cpu: Cpu
@@ -63,11 +60,14 @@ trait KingstonMemoryContext extends MemoryContext {
 }
 
 /**
- * Computers
+ * Classes
  */
-object Computers {
 
-	//val computer1: ComputerContext = ??? //new ComputerContext with ...
-	val computer1: ComputerContext = new ComputerContext with IntelCpuContext with AsusMotherboardContext with CorsairMemoryContext
-	val computer2: ComputerContext = new ComputerContext with AmdCpuContext with AsusMotherboardContext with KingstonMemoryContext
+trait ComputerComponent {
+	val manufacturer: String
 }
+case class Cpu(manufacturer: String, clockSpeed: Double) extends ComputerComponent
+case class Memory(manufacturer: String, ram: Int) extends ComputerComponent
+case class Motherboard(manufacturer: String) extends ComputerComponent
+
+case class Computer(motherboard: Motherboard, cpu: Cpu, memory: Memory)
