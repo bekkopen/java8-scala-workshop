@@ -10,17 +10,17 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class Ex5_OptionSpec extends FlatSpec with Matchers {
 
-	"Younges player name" should "be present" in {
+	"youngestPlayerNameOlderThan" should "be present" in {
 		val playerName = Ex5_Option.youngestPlayerNameOlderThan(manchesterUnited, LocalDate.of(1986, 1, 1))
 		playerName shouldBe Some(wayneRooney.name)
 	}
 
-	"Youngest player name" should "not be present" in {
+	"youngestPlayerNameOlderThan" should "not be present" in {
 		val playerName = Ex5_Option.youngestPlayerNameOlderThan(liverpool, LocalDate.of(1900, 1, 1))
 		playerName shouldBe None
 	}
 
-	"Youngest player name" should "not be present when team with no players" in {
+	"youngestPlayerNameOlderThan" should "not be present when team with no players" in {
 		val playerName = Ex5_Option.youngestPlayerNameOlderThan(Team("", 0, Nil), LocalDate.of(2000, 1, 1))
 		playerName shouldBe None
 	}

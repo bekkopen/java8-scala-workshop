@@ -11,7 +11,7 @@ object Ex4_LambdaParallel {
 		try {
 			Thread.sleep(100)
 		} catch {
-			case e: InterruptedException => e.printStackTrace
+			case e: InterruptedException => e.printStackTrace()
 		}
 		predicate(x)
 	}
