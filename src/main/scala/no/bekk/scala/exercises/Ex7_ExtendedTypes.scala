@@ -1,9 +1,9 @@
 package no.bekk.scala.exercises
 
-import no.bekk.scala.exercises.Ex6_ExtendedTypes.Competing
+import no.bekk.scala.exercises.Ex7_ExtendedTypes.Competing
 import no.bekk.scala.model.Car
 
-object Ex6_ExtendedTypes {
+object Ex7_ExtendedTypes {
 
 	trait Competing[T] {
 		def compete(a: T, b: T): T

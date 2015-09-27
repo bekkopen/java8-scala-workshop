@@ -1,6 +1,6 @@
 package no.bekk.scala.exercises
 
-object Ex7_Computers {
+object Ex6_Computers {
 
 	// A computer with Intel CPU, Asus motherboard, and Corsair memory
 	def computer1: Computer = (new ComputerContext with IntelCpuContext with AsusMotherboardContext with CorsairMemoryContext).computer

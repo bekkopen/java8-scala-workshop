@@ -7,7 +7,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class Ex6_ExtendedTypesTest {
+public class Ex7_ExtendedTypesTest {
 
 	@Test
 	public void testCompetingCarsUsingAdapter() {
@@ -15,7 +15,7 @@ public class Ex6_ExtendedTypesTest {
 		Car opel = new Car("Opel", 9_122_920.0, 187.8);
 		Car bmw = new Car("BMW", 1_322_766.0, 209.2);
 
-		Car winner = Ex6_ExtendedTypes.compete(asList(new CarAdapter(audi), new CarAdapter(opel), new CarAdapter(bmw)));
+		Car winner = Ex7_ExtendedTypes.compete(asList(new CarAdapter(audi), new CarAdapter(opel), new CarAdapter(bmw)));
 		assertThat("The winner should be the car with most hp", winner, is(audi));
 	}
 }

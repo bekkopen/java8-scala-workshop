@@ -6,7 +6,7 @@ import org.scalatest.junit.JUnitRunner
 import no.bekk.scala.model.Car
 
 @RunWith(classOf[JUnitRunner])
-class Ex6_ExtendedTypesSpec extends FlatSpec with Matchers {
+class Ex7_ExtendedTypesSpec extends FlatSpec with Matchers {
 
 	import CompetingTypes._
 
@@ -15,7 +15,7 @@ class Ex6_ExtendedTypesSpec extends FlatSpec with Matchers {
 		val opel = Car("Opel", 9122920.0, 187.8)
 		val bmw = Car("BMW", 1322766.0, 209.2)
 
-		val winner = Ex6_ExtendedTypes.compete(audi :: opel :: bmw :: Nil)
+		val winner = Ex7_ExtendedTypes.compete(audi :: opel :: bmw :: Nil)
 
 		winner shouldBe audi
 	}

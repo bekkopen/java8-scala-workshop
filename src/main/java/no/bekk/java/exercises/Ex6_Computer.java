@@ -1,6 +1,6 @@
 package no.bekk.java.exercises;
 
-public class Ex7_Computer {
+public class Ex6_Computer {
 
 	static Computer computer1() {
 		// A computer with Intel CPU, Asus motherboard, and Corsair memory
