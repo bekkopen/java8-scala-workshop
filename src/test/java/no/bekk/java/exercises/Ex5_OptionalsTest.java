@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static no.bekk.java.exercises.Ex5_Optional.youngestPlayerNameOlderThan;
+import static no.bekk.java.exercises.Ex5_Optionals.youngestPlayerNameOlderThan;
 import static no.bekk.java.model.Data.liverpool;
 import static no.bekk.java.model.Data.manchesterUnited;
 import static no.bekk.java.model.Data.wayneRooney;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class Ex5_OptionalTest {
+public class Ex5_OptionalsTest {
 
 	@Test
 	public void testYoungestPlayerNameOlderThanWhenPresent() {
