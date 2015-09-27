@@ -9,15 +9,6 @@ import java.time.{Period, LocalDate}
 @RunWith(classOf[JUnitRunner])
 class Ex3_LambdaSpec extends FlatSpec with Matchers {
 
-	"teamNames" should "result in a list of the names of the teams" in {
-		val teams = manchesterUnited :: liverpool :: arsenal :: Nil
-
-		val teamNames = Ex3_Lambda.teamNames(teams)
-
-		teamNames shouldBe "Manchester United" :: "Liverpool" :: "Arsenal" :: Nil
-
-	}
-
 	"ageOfOldestPlayer" should "return oldest player" in {
 		val players = wayneRooney :: juanMatta :: mesutOzil :: olivierGiroud :: Nil
 

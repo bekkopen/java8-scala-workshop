@@ -7,8 +7,6 @@ object Ex3_Lambda {
 
 	import ListExtensions._
 
-	def teamNames(teams: List[Team]) = teams.map(_.name)
-
 	def ageOfOldestPlayer(players: List[Player]) = players.map(_.age).max
 
 	def averageAgeOfPlayers(players: List[Player]) = players.map(_.age).sum.toDouble / players.length
