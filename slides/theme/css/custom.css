@@ -54,3 +54,23 @@ table th.grayhighlight {
     background: -o-linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
     background: linear-gradient(top, #424242 40%, #424242 80%) no-repeat;
 }
+
+span.code {
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    font-size: 15px;
+    /*line-height: 28px;*/
+    height: inherit;
+    /*padding: 10px 0 10px 60px;*/
+    letter-spacing: -1px;
+    /*margin-bottom: 20px;*/
+    width: 100%;
+    /*padding-left: 10em;*/
+    padding-right: 1em;
+    /*background-color: #e6e6e6;*/
+    /*left: -60px;*/
+    /*position: relative;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    /*overflow: hidden;*/
+}

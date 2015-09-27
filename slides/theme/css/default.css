@@ -754,8 +754,10 @@ table th {
 }
 /* line 494, ../scss/default.scss */
 table td, table th {
-  font-size: 18px;
-  padding: 1em 0.5em;
+  /*padding: 1em 0.5em;*/
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 1em;
 }
 /* line 499, ../scss/default.scss */
 table td.highlight {
