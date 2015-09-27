@@ -11,11 +11,11 @@ import java.util.function.Predicate;
 public class Ex1_Lambda {
 
 	public static Function<Player, String> playerName() {
-		return player -> player.getName();
+		return Player::getName;
 	}
 
 	public static Function<Player, Integer> playerAge() {
-		return player -> player.getAge();
+		return Player::getAge;
 	}
 
 	public static Predicate<Player> isOlderThan(Integer age) {

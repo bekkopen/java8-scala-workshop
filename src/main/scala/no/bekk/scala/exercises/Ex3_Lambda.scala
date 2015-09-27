@@ -20,11 +20,11 @@ object Ex3_Lambda {
 
 	def sumValueOfAllTeams(teams: List[Team]) = teams.map(_.value).sum
 
-	def youngestPlayer(players: List[Player]) = players.reduce(Ex1_Lambda.youngestPlayerLambda)
+	def youngestPlayer(players: List[Player]) = players.reduce(Ex1_Lambda.youngestPlayer)
 
 	def groupPlayersByBirthYear(players: List[Player]) = players.groupBy(_.birthDate.getYear)
 
-	def teamWithHighestValue(teams: List[Team]) = teams.reduce(Ex1_Lambda.highestTeamValueLambda)
+	def teamWithHighestValue(teams: List[Team]) = teams.reduce(Ex1_Lambda.highestTeamValue)
 
 	def sumValuesOfEachLeague(leagues: List[League]) =
 		leagues.map(_.teams.map(_.value).sum)
