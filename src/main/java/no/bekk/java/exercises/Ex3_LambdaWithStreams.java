@@ -42,7 +42,7 @@ public class Ex3_LambdaWithStreams {
 	}
 
 	static Player youngestPlayer(List<Player> players) {
-		return players.stream().reduce(Ex1_Lambda.youngestPlayerLambda).get();
+		return players.stream().reduce(Ex1_Lambda.youngestPlayer()).get();
 	}
 
 	static Map<Integer, List<Player>> groupPlayersByBirthYear(List<Player> players) {
@@ -50,7 +50,7 @@ public class Ex3_LambdaWithStreams {
 	}
 
 	static Team teamWithHighestValue(final List<Team> teams) {
-		return teams.stream().reduce(Ex1_Lambda.highestTeamValueLambda).get();
+		return teams.stream().reduce(Ex1_Lambda.highestTeamValue()).get();
 	}
 
 	static List<Double> sumValuesOfEachLeague(final List<League> leagues) {
