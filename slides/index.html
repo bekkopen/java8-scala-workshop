@@ -49,9 +49,8 @@ URL: https://code.google.com/p/io-2012-slides
 				<li>New in Java 8</li>
 				<li>λ - Lambda</li>
 				<li>Lambda Examples</li>
-				<li>Functional Interfaces</li>
-				<li>Lambdas: Java 8 vs. Scala</li>
-				<li>Default Methods and Traits</li>
+				<li>Lambda and Functional Interfaces</li>
+				<li>Default Methods</li>
 				<li>Streams</li>
 				<li>Lambda on Streams</li>
 				<li>Optional</li>
@@ -173,8 +172,8 @@ MyFunctionalInterface&lt;String, Integer&gt; fn1 =
         }
     };
 MyFunctionalInterface&lt;String, Integer&gt; fn2 = (String a) -> {return Integer.valueOf(a);};
-MyFunctionalInterface&lt;String, Integer&gt; fn5 = a -> Integer.valueOf(a);
-MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
+MyFunctionalInterface&lt;String, Integer&gt; fn3 = a -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn4 = Integer::valueOf;
             </pre>
 		</article>
 	</slide>
@@ -185,8 +184,8 @@ MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
 		</hgroup>
 		<article>
             <pre class="prettyprint" data-lang="Java 8">
-MyFunctionalInterface&lt;String, Integer&gt; fn5 = a -> Integer.valueOf(a);
-MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
+MyFunctionalInterface&lt;String, Integer&gt; fn3 = a -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn4 = Integer::valueOf;
             </pre>
 			<pre class="prettyprint" data-lang="Scala">
 val fn1: Function[String, Int] = (a: String) => a.toInt
@@ -213,6 +212,10 @@ val fn4 = (a: String) => a.toInt
 			<h2>Default Methods</h2>
 		</hgroup>
 		<article>
+			<ul>
+				<li>New functionality to interfaces</li>
+				<li>Retain binary compatibility with code using old versions of interfaces</li>
+			</ul>
             <pre class="prettyprint" data-lang="Java 8">
 public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
 
@@ -513,7 +516,7 @@ public static String getNameOfOwner(House house) {
             </pre>
             <pre class="prettyprint" data-lang="Java 8">
 public static String getNameOfOwner(House house) {
-  return Optional.of(house).map(h -> h.owner).map(p -> p.name).orElseGet(() -> "Doesn't exist");
+  return Optional.of(house).map(House::getOwner).map(Person::getName).orElseGet(() -> "Doesn't exist");
 }
             </pre>
             <pre class="prettyprint" data-lang="Scala">
@@ -539,10 +542,6 @@ def getNameOfOwner(house: House) =
 			<h2>Default Methods in Interfaces vs. Traits</h2>
 		</hgroup>
 		<article>
-			<ul>
-				<li>New functionality to interfaces</li>
-				<li>Retain binary compatibility with code using old versions of interfaces</li>
-			</ul>
             <pre class="prettyprint" data-lang="Java 8">
 interface Rectangle {
     Integer width();
