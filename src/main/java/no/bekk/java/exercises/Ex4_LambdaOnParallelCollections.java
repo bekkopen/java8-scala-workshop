@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
-import static no.bekk.java.util.Utils.implementThis;
 
 public class Ex4_LambdaOnParallelCollections {
 
 	static List<Team> teamsWithValueHigherThan(Double value, List<Team> teams) {
-		return implementThis();
+		return teams.parallelStream().filter(slowPredicate(team -> team.value > value)).collect(toList());
 	}
 
 	private static <T> Predicate<T> slowPredicate(Predicate<T> predicate) {
