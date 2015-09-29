@@ -1,7 +1,7 @@
 package no.bekk.scala.examples
 
 case class StrigCache() extends Retrievable[String] with Cache[String] {
-  def retrieve = ???
+  override def retrieve = ???
 }
 
 trait Retrievable[T] {
@@ -18,7 +18,7 @@ trait Cache[T] {
     value.get
   }
 
-  def invalidate {
+  def invalidate() {
     value = None
   }
 }
