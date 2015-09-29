@@ -191,7 +191,8 @@ MyFunctionalInterface&lt;String, Integer&gt; fn4 = Integer::valueOf;
 val fn1: Function[String, Int] = (a: String) => a.toInt
 val fn2: Function[String, Int] = a => a.toInt
 val fn3: Function[String, Int] = _.toInt
-val fn4 = (a: String) => a.toInt
+val fn4: String => Int = _.toInt
+val fn5 = (a: String) => a.toInt
             </pre>
 		</article>
 	</slide>
