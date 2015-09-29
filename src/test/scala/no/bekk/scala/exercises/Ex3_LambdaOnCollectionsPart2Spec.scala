@@ -90,7 +90,6 @@ class Ex3_LambdaOnCollectionsPart2Spec extends FlatSpec with Matchers {
 		val players = wayneRooney :: juanMattaClone :: danielAlves :: juanMatta :: diegoCosta :: Nil
 
 		val result = Ex3_LambdaOnCollectionsPart2.sortByAgeAndThenName(players)
-		println(result)
 
 		result(0) shouldBe diegoCosta
 		result(1) shouldBe juanMatta
