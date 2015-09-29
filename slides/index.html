@@ -9,91 +9,213 @@ URL: https://code.google.com/p/io-2012-slides
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <!--This one seems to work all the time, but really small on ipad-->
-    <!--<meta name="viewport" content="initial-scale=0.4">-->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" media="all" href="theme/css/default.css">
-    <link rel="stylesheet" media="all" href="theme/css/custom.css">
-    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
-    <base target="_blank">
-    <!-- This amazingness opens all links in a new tab. -->
-    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+	<title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+	<!--This one seems to work all the time, but really small on ipad-->
+	<!--<meta name="viewport" content="initial-scale=0.4">-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" media="all" href="theme/css/default.css">
+	<link rel="stylesheet" media="all" href="theme/css/custom.css">
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+	<base target="_blank">
+	<!-- This amazingness opens all links in a new tab. -->
+	<script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
 </head>
 <body style="opacity: 0">
 
 <slides class="layout-widescreen">
 
-<slide class="title-slide segue nobackground">
-    <aside class="gdbar"><img src="images/BEKK_logo.png"></aside>
-    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
-    <hgroup class="auto-fadein">
-        <h1 data-config-title><!-- populated from slide_config.json --></h1>
+	<slide class="title-slide segue nobackground">
+		<aside class="gdbar"><img src="images/BEKK_logo.png"></aside>
+		<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+		<hgroup class="auto-fadein">
+			<h1 data-config-title><!-- populated from slide_config.json --></h1>
 
-        <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+			<h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
 
-        <p data-config-presenter><!-- populated from slide_config.json --></p>
-    </hgroup>
-</slide>
+			<p data-config-presenter><!-- populated from slide_config.json --></p>
+		</hgroup>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Outline</h2>
-    </hgroup>
-    <article>
-        <ul>
-			<li>Default Methods and Traits</li>
-			<li>Functional Interfaces</li>
-			<li>Lambda expressions</li>
-			<li>Streams</li>
-			<li>Lambda on streams</li>
-			<li>Optional</li>
-			<li>Scope</li>
-			<li>Closures</li>
-        </ul>
-    </article>
-</slide>
+	<slide>
+		<hgroup>
+			<h2>Outline</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>New in Java 8</li>
+				<li>λ - Lambda</li>
+				<li>Lambda Examples</li>
+				<li>Lambda and Functional Interfaces</li>
+				<li>Default Methods</li>
+				<li>Streams</li>
+				<li>Lambda on Streams</li>
+				<li>Optional</li>
+				<li>Default methods in Interfaces vs. Traits</li>
+				<li>Scope</li>
+				<li>Closures</li>
+			</ul>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Motivation</h2>
-    </hgroup>
-    <article>
-        <ul>
-            <li>Concurrency</li>
-            <li>Less error prone</li>
-            <li>Higher abstraction level</li>
-            <li>Concise code</li>
-        </ul>
-    </article>
-</slide>
+	<slide>
+		<hgroup>
+			<h2>New in Java 8</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Lambda expressions</li>
+				<li>Functional Interfaces</li>
+				<li>Default Methods</li>
+				<li>A new Stream API</li>
+				<li>Optional</li>
+				<li>A new Date/Time API</li>
+			</ul>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Default Methods</h2>
-    </hgroup>
-    <article>
-        <ul>
-            <li>New functionality to interfaces</li>
-            <li>Retain binary compatibility with code using old versions of interfaces</li>
-        </ul>
+	<slide>
+		<hgroup>
+			<h2>λ - Lambda</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Lambda calculus - the theoretical foundation of functional languages</li>
+				<li>Supported by many non-functional languages</li>
+				<li>Benefits
+					<ul>
+						<li>Concise code</li>
+						<li>Less error prone</li>
+						<li>Higher abstraction level</li>
+						<li>Concurrency</li>
+					</ul>
+				</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Lambda Examples</h2>
+		</hgroup>
+
+		<article>
+		<pre class="prettyprint" data-lang="Java 8">
+x -> x + 1
+x -> x.toString
+x -> Integer.valueOf(x)
+x -> x == 1
+(x, y) -> x.compareTo(y)
+(x, y) -> x.equals(y)
+		</pre>
+<pre class="prettyprint" data-lang="Scala">
+x => x + 1
+x => x.toString
+x => x.toInt
+x => x == 1
+(x, y) => x.compareTo(y)
+(x, y) => x == y
+		</pre>
+		</article>
+
+
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Functional Interfaces</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Single-method interface</li>
+				<li>Many predefined functional interfaces in the <code>java.util.function</code> package</li>
+			</ul>
             <pre class="prettyprint" data-lang="Java 8">
-interface Rectangle {
-    Integer width();
-    Integer height();
-    <b>default</b> Integer surface() { return width() * height();}
+@FunctionalInterface
+public interface MyFunctionalInterface&lt;I, O&gt; {
+    public O apply(I i);
 }
             </pre>
-    </article>
-</slide><slide>
-    <hgroup>
-        <h2>Default Methods</h2>
-    </hgroup>
-    <article>
+			<ul>
+				<li>Less typing overhead in Scala: Function0 - Function22 based on number of arguments</li>
+			</ul>
+
+	<pre class="prettyprint" data-lang="Scala">
+trait Function3[-T1, -T2, -T3, +R] extends AnyRef { self =>
+    def apply(v1: T1, v2: T2, v3: T3): R
+    def curried: T1 => T2 => T3 => R
+    def tupled: Tuple3[T1, T2, T3] => R
+}
+		</pre>
+		</article>
+	</slide>
+	<slide>
+		<hgroup>
+			<h2>Lambdas in Java 8</h2>
+		</hgroup>
+		<article>
+            <pre class="prettyprint" data-lang="Java 8">
+@FunctionalInterface
+public interface MyFunctionalInterface&lt;I, O&gt; {
+    public O apply(I i);
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Java 8">
+MyFunctionalInterface&lt;String, Integer&gt; fn1 =
+    new MyFunctionalInterface&lt;String, Integer&gt;() {
+        @Override
+        public Integer apply(String s) {
+            return Integer.valueOf(s);
+        }
+    };
+MyFunctionalInterface&lt;String, Integer&gt; fn2 = (String a) -> {return Integer.valueOf(a);};
+MyFunctionalInterface&lt;String, Integer&gt; fn3 = a -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn4 = Integer::valueOf;
+            </pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Lambdas - Java 8 vs. Scala</h2>
+		</hgroup>
+		<article>
+            <pre class="prettyprint" data-lang="Java 8">
+MyFunctionalInterface&lt;String, Integer&gt; fn3 = a -> Integer.valueOf(a);
+MyFunctionalInterface&lt;String, Integer&gt; fn4 = Integer::valueOf;
+            </pre>
+			<pre class="prettyprint" data-lang="Scala">
+val fn1: Function[String, Int] = (a: String) => a.toInt
+val fn2: Function[String, Int] = a => a.toInt
+val fn3: Function[String, Int] = _.toInt
+val fn4 = (a: String) => a.toInt
+            </pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Exercises</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Ex1_Lambda</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Default Methods</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>New functionality to interfaces</li>
+				<li>Retain binary compatibility with code using old versions of interfaces</li>
+			</ul>
             <pre class="prettyprint" data-lang="Java 8">
 public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
 
@@ -104,46 +226,376 @@ public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
    }
 }
             </pre>
-    </article>
-</slide>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Default Methods in Interfaces vs. Traits</h2>
-    </hgroup>
-    <article>
-        <table>
-            <tr>
-                <th width="1em" class="grayhighlight">Functionality</th>
-                <th width="1em" class="grayhighlight">Interface with default methods</th>
-                <th width="1em" class="grayhighlight">Traits</th>
-            </tr>
-            <tr>
-                <td>Behaviour</td>
-                <td class="greenhighlight">Yes</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-            <tr>
-                <td>State</td>
-                <td class="redhighlight">No</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-            <tr>
-                <td>Self reference</td>
-                <td class="redhighlight">No</td>
-                <td class="greenhighlight">Yes</td>
-            </tr>
-        </table>
-    </article>
-</slide>
+	<slide>
+		<hgroup>
+			<h2>Streams</h2>
 
-<slide>
-    <hgroup>
-        <h2>Traits</h2>
+			<h3>Java 8 vs. Scala</h3>
+			<br/>
+			<ul>
+				<li>Source</li>
+				<li>Intermediate Operation(s)</li>
+				<li>Terminal Operation</li>
+			</ul>
+		</hgroup>
+		<article>
+<pre class="prettyprint" data-lang="Java 8">
+myCollection.stream().filter(...).map(...).forEach(...);
 
-        <h3>Cache Example</h3>
-    </hgroup>
-    <article class="smaller">
+myCollection.parallelStream().filter(...).map(...).forEach(...);
+</pre>
+<pre class="prettyprint" data-lang="Scala">
+myCollection.toStream.filter(...).map(...).foreach(...)
+
+myCollection.par.filter(...).map(...).foreach(...)
+</pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Java 8 Streams - Intermediate Operations</h2>
+		</hgroup>
+		<article class="smaller">
+			<table>
+				<tr>
+					<th>Method</th>
+					<th>Example</th>
+				</tr>
+				<!-- TODO: Vise resultat av eksempler? -->
+				<tr>
+					<td>---</td>
+					<td class="code">Stream&lt;String&gt; strings = Stream.of("1", "22", "333", "4444", "55555");<br/>
+						Stream&lt;Stream&lt;String&gt;&gt; streams = Stream.of(strings);
+					</td>
+				</tr>
+				<tr>
+					<td>filter(Predicate<? super T> predicate)</td>
+					<td class="code">strings.filter(x -> x.length() < 3);</td>
+				</tr>
+				<tr>
+					<td>map(mapper)</td>
+					<td class="code">strings.map(x -> x.substring(3));</td>
+				</tr>
+				<tr>
+					<td>mapToInt(mapper)</td>
+					<td class="code">strings.mapToInt(x -> Integer.valueOf(x));</td>
+				</tr>
+				<tr>
+					<td>mapToLong(mapper)</td>
+					<td class="code">strings.mapToLong(x -> Long.valueOf(x));</td>
+				</tr>
+				<tr>
+					<td>mapToDouble(mapper)</td>
+					<td class="code">strings.mapToDouble(x -> Double.valueOf(x));</td>
+				</tr>
+				<tr>
+					<td>flatMap(mapper)</td>
+					<td class="code">streams.flatMap(s -> s.map(x -> x.substring(3)));</td>
+				</tr>
+				<tr>
+					<td>flatMapToInt(mapper)</td>
+					<td class="code">streams.flatMapToInt(s -> s.mapToInt(x -> Integer.valueOf(x)));</td>
+				</tr>
+				<tr>
+					<td>flatMapToLong(mapper)</td>
+					<td class="code">streams.flatMapToLong(s -> s.mapToLong(x -> Long.valueOf(x)));</td>
+				</tr>
+				<tr>
+					<td>flatMapToDouble(mapper)</td>
+					<td class="code">streams.flatMapToDouble(s -> s.mapToDouble(x -> Double.valueOf(x)));</td>
+				</tr>
+				<tr>
+					<td>distinct()</td>
+					<td class="code">strings.distinct();</td>
+				</tr>
+				<tr>
+					<td>sorted()</td>
+					<td class="code">strings.sorted();</td>
+				</tr>
+				<tr>
+					<td>sorted(comparator)</td>
+					<td class="code">strings.sorted(Comparator.comparing(x -> x));</td>
+				</tr>
+				<tr>
+					<td>peek(action)</td>
+					<td class="code">strings.peek(x -> System.out.println(x));</td>
+				</tr>
+				<tr>
+					<td>limit(maxSize)</td>
+					<td class="code">strings.limit(2);</td>
+				</tr>
+				<tr>
+					<td>skip(n)</td>
+					<td class="code">strings.skip(1);</td>
+				</tr>
+			</table>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Java 8 Streams - Terminal Operations</h2>
+		</hgroup>
+		<article class="smaller">
+			<table>
+				<tr>
+					<th>Method</th>
+					<th>Example</th>
+				</tr>
+				<tr>
+					<td>---</td>
+					<td class="code">Stream&lt;String&gt; strings = Stream.of("1", "22", "333", "4444", "55555");<br/>
+				</tr>
+				<tr>
+					<td>forEach(action)</td>
+					<td class="code">strings.forEach(x -> System.out.println(x));</td>
+				</tr>
+				<tr>
+					<td>forEachOrdered(action)</td>
+					<td class="code">strings.forEachOrdered(x -> System.out.println(x));</td>
+				</tr>
+				<tr>
+					<td>toArray()</td>
+					<td class="code">strings.toArray();</td>
+				</tr>
+				<tr>
+					<td>toArray(generator)</td>
+					<td class="code">strings.toArray(i -> new String[i]);</td>
+				</tr>
+				<tr>
+					<td>reduce(identity, accumulator)</td>
+					<td class="code">strings.reduce("", (x, y) -> x.concat(y));</td>
+				</tr>
+				<tr>
+					<td>reduce(accumulator)</td>
+					<td class="code">strings.reduce((x, y) -> x.concat(y));</td>
+				</tr>
+				<tr>
+					<td>reduce(identity, accumulator, combiner)</td>
+					<td class="code">strings.reduce(0, (x, y) -> x + y.length(), (x, y) -> x + y);</td>
+				</tr>
+				<tr>
+					<td>collect(collector)</td>
+					<td class="code">strings.collect(Collectors.toList());</td>
+				</tr>
+				<tr>
+					<td>collect(supplier, accumulator, combiner)</td>
+					<td class="code">strings.collect(() -> new ArrayList<>(), (list, elem) -> list.add(elem), (l1, l2)
+						-> l1.addAll(l2));
+					</td>
+				</tr>
+				<tr>
+					<td>min(comparator)</td>
+					<td class="code">strings.min(Comparator.comparing(x -> x));</td>
+				</tr>
+				<tr>
+					<td>max(comparator)</td>
+					<td class="code">strings.max(Comparator.comparing(x -> x));</td>
+				</tr>
+				<tr>
+					<td>count()</td>
+					<td class="code">strings.count();</td>
+				</tr>
+				<tr>
+					<td>anyMatch(predicate)</td>
+					<td class="code">strings.anyMatch(x -> x.length() > 3);</td>
+				</tr>
+				<tr>
+					<td>allMatch(predicate)</td>
+					<td class="code">strings.allMatch(x -> x.length() > 3);</td>
+				</tr>
+				<tr>
+					<td>noneMatch(predicate)</td>
+					<td class="code">strings.noneMatch(x -> x.length() > 3);</td>
+				</tr>
+				<tr>
+					<td>findFirst()</td>
+					<td class="code">strings.findFirst();</td>
+				</tr>
+				<tr>
+					<td>findAny()</td>
+					<td class="code">strings.findAny();</td>
+				</tr>
+			</table>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Lambda on Streams</h2>
+
+			<h3>Java 7 vs. Java 8</h3>
+			<ul>
+				<li>public Car(String brand, Double price)</li>
+				<li>Return list of brands sorted by price</li>
+			</ul>
+		</hgroup>
+		<article class="smaller">
+<pre class="prettyprint" data-lang="Java 7">
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  List&lt;Car&gt; carsSortedByPrice = new ArrayList&lt;&gt;(); List&lt;String&gt; brands = new ArrayList&lt;&gt;();
+  for (Car car : cars) {
+    int i = 0;
+    while (i &lt; carsSortedByPrice.size() && carsSortedByPrice.get(i).getPrice() &lt; car.getPrice()) i++;
+    carsSortedByPrice.add(i, car);
+    brands.add(i, car.getBrand());
+  }
+  return brands;
+}
+</pre>
+<pre class="prettyprint" data-lang="Java 8">
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  return cars.stream()
+               .sorted(comparing(Car::getPrice))
+               .map(Car::getBrand)
+               .collect(toList());
+}
+</pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Lambda on Streams</h2>
+
+			<h3>Java 8 vs. Scala</h3>
+			<ul>
+				<li>public Car(String brand, Double price)</li>
+				<li>Return list of brands sorted by price</li>
+			</ul>
+		</hgroup>
+		<article class="smaller">
+		<pre class="prettyprint" data-lang="Java 8">
+public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
+  return cars.stream()
+               .sorted(comparing(Car::getPrice))
+               .map(Car::getBrand)
+               .collect(toList());
+}
+		</pre>
+		<pre class="prettyprint" data-lang="Scala">
+def brandsSortedByPrice(cars: List[Car]) = cars.sortBy(_.price).map(_.brand)
+		</pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Exercises</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Ex2_LambdaOnCollectionsPart1</li>
+				<li>Ex3_LambdaOnCollectionsPart2</li>
+				<li>Ex4_LambdaOnParallelCollections</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Optional</h2>
+		</hgroup>
+		<article class="smaller">
+			<ul>
+				<li>public Person(String name)</li>
+				<li>public House(Person owner)</li>
+			</ul>
+            <pre class="prettyprint" data-lang="Java 7">
+public static String getNameOfOwner(House house) {
+  if (house != null && house.owner != null && house.owner.name != null) {
+    return house.owner.name;
+  } else {
+    return "Doesn't exist";
+  }
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Java 8">
+public static String getNameOfOwner(House house) {
+  return Optional.of(house).map(House::getOwner).map(Person::getName).orElseGet(() -> "Doesn't exist");
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Scala">
+def getNameOfOwner(house: House) =
+    Option(house).map(_.owner).flatMap(Option(_)).map(_.name).getOrElse("Doesn't exist")
+            </pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Exercises</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Ex5_Optionals</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Default Methods in Interfaces vs. Traits</h2>
+		</hgroup>
+		<article>
+            <pre class="prettyprint" data-lang="Java 8">
+interface Rectangle {
+    Integer width();
+    Integer height();
+    <b>default</b> Integer surface() { return width() * height();}
+}
+            </pre>
+            <pre class="prettyprint" data-lang="Scala">
+trait Rectangle {
+    def width: Int
+    def height: Int
+    def surface = width * height
+}
+            </pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Default Methods in Interfaces vs. Traits</h2>
+		</hgroup>
+		<article>
+			<table>
+				<tr>
+					<th width="1em" class="grayhighlight">Functionality</th>
+					<th width="1em" class="grayhighlight">Interface with default methods</th>
+					<th width="1em" class="grayhighlight">Traits</th>
+				</tr>
+				<tr>
+					<td>Behaviour</td>
+					<td class="greenhighlight">Yes</td>
+					<td class="greenhighlight">Yes</td>
+				</tr>
+				<tr>
+					<td>State</td>
+					<td class="redhighlight">No</td>
+					<td class="greenhighlight">Yes</td>
+				</tr>
+				<tr>
+					<td>Self reference</td>
+					<td class="redhighlight">No</td>
+					<td class="greenhighlight">Yes</td>
+				</tr>
+			</table>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Traits</h2>
+
+			<h3>Cache Example</h3>
+		</hgroup>
+		<article class="smaller">
 <pre class="prettyprint" data-lang="Scala">
 case class StrigCache() extends Retrievable[String] with Cache[String] {
   def retrieve = ???
@@ -169,258 +621,29 @@ trait Cache[T] {
 }
 
 </pre>
-    </article>
-</slide>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Functional Interfaces</h2>
-    </hgroup>
-    <article>
-        <ul>
-            <li>Single-method interface</li>
-            <li>Many predefined functional interfaces in the <code>java.util.function</code> package</li>
-        </ul>
-            <pre class="prettyprint" data-lang="Java 8">
-@FunctionalInterface
-public interface MyFunctionalInterface&lt;I, O&gt; {
-    public O apply(I i);
-}
-            </pre>
-    </article>
-</slide>
+	<slide>
+		<hgroup>
+			<h2>Exercises</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Ex6_DependencyInjection</li>
+				<li>Ex7_ExtendedTypes</li>
+			</ul>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Lambdas</h2>
-    </hgroup>
-    <article>
-            <pre class="prettyprint" data-lang="Java 8">
-@FunctionalInterface
-public interface MyFunctionalInterface&lt;I, O&gt; {
-    public O apply(I i);
-}
-            </pre>
-            <pre class="prettyprint" data-lang="Java 8">
-MyFunctionalInterface&lt;String, Integer&gt; fn1 =
-    new MyFunctionalInterface&lt;String, Integer&gt;() {
-        @Override
-        public Integer apply(String s) {
-            return Integer.valueOf(s);
-        }
-    };
-MyFunctionalInterface&lt;String, Integer&gt; fn2 = (String a) -> {return Integer.valueOf(a);};
-MyFunctionalInterface&lt;String, Integer&gt; fn3 = (String a) -> Integer.valueOf(a);
-MyFunctionalInterface&lt;String, Integer&gt; fn4 = (a) -> Integer.valueOf(a);
-MyFunctionalInterface&lt;String, Integer&gt; fn5 = a -> Integer.valueOf(a);
-MyFunctionalInterface&lt;String, Integer&gt; fn6 = Integer::valueOf;
-            </pre>
-    </article>
-</slide>
-
-<slide>
-	<hgroup>
-		<h2>Exercises</h2>
-	</hgroup>
-	<article>
-		<ul>
-			<li>Ex1_Lambda</li>
-			<li>Ex2_LambdaOnLists</li>
-		</ul>
-	</article>
-</slide>
-
-<slide>
-    <hgroup>
-        <h2>Streams</h2>
-
-        <h3>Java 8 vs. Scala</h3>
-         <br/>
-        <ul>
-            <li>Source</li>
-            <li>Intermediate Operation(s)</li>
-            <li>Terminal Operation</li>
-        </ul>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="Java 8">
-myCollection.stream().filter(...).map(...).max();
-
-myCollection.parallelStream().filter(...).map(...).max();
-</pre>
-<pre class="prettyprint" data-lang="Scala">
-myCollection.stream.filter(...).map(...).max
-
-myCollection.par.filter(...).map(...).max
-</pre>
-    </article>
-</slide>
-
-<slide>
-    <hgroup>
-        <h2>Streams Operations</h2>
-    </hgroup>
-    <article class="smaller">
-        <table>
-            <tr>
-                <th>Intermediate Operations</th><th>Terminal Operations</th>
-            </tr>
-            <tr>
-                <td>filter</td><td>forEach</td>
-            </tr>
-            <tr>
-                <td>map</td><td>toArray</td>
-            </tr>
-            <tr>
-                <td>flatMap</td><td>reduce</td>
-            </tr>
-            <tr>
-                <td>peak</td><td>collect</td>
-            </tr>
-            <tr>
-                <td>distinct</td><td>min</td>
-            </tr>
-            <tr>
-                <td>sorted</td><td>max</td>
-            </tr>
-            <tr>
-                <td>limit</td><td>count</td>
-            </tr>
-            <tr>
-                <td>skip</td><td>anyMatch</td>
-            </tr>
-            <tr>
-                <td></td><td>allMatch</td>
-            </tr>
-            <tr>
-                <td></td><td>noneMatch</td>
-            </tr>
-            <tr>
-                <td></td><td>findFirst</td>
-            </tr>
-            <tr>
-                <td></td><td>findAny</td>
-            </tr>
-        </table>
-    </article>
-</slide>
-
-<slide>
-    <hgroup>
-        <h2>Lambda Expressions</h2>
-
-        <h3>Java 7 vs. Java 8</h3>
-        <ul>
-            <li>public Car(String brand, Double price)</li>
-            <li>Return list of brands sorted by price</li>
-        </ul>
-    </hgroup>
-    <article class="smaller">
-<pre class="prettyprint" data-lang="Java 7">
-public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
-  List&lt;Car&gt; carsSortedByPrice = new ArrayList&lt;&gt;(); List&lt;String&gt; brands = new ArrayList&lt;&gt;();
-  for (Car car : cars) {
-    int i = 0;
-    while (i &lt; carsSortedByPrice.size() && carsSortedByPrice.get(i).getPrice() &lt; car.getPrice()) i++;
-    carsSortedByPrice.add(i, car);
-    brands.add(i, car.getBrand());
-  }
-  return brands;
-}
-</pre>
-<pre class="prettyprint" data-lang="Java 8">
-public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
-  return cars.stream()
-               .sorted(comparing(Car::getPrice))
-               .map(Car::getBrand)
-               .collect(toList());
-}
-</pre>
-    </article>
-</slide>
-
-<slide>
-	<hgroup>
-		<h2>Lambda Expressions</h2>
-
-		<h3>Java 8 vs. Scala</h3>
-		<ul>
-			<li>public Car(String brand, Double price)</li>
-			<li>Return list of brands sorted by price</li>
-		</ul>
-	</hgroup>
-	<article class="smaller">
-		<pre class="prettyprint" data-lang="Java 8">
-public static List&lt;String&gt; brandsSortedByPrice(List&lt;Car&gt; cars) {
-  return cars.stream()
-               .sorted(comparing(Car::getPrice))
-               .map(Car::getBrand)
-               .collect(toList());
-}
-		</pre>
-		<pre class="prettyprint" data-lang="Scala">
-def brandsSortedByPrice(cars: List[Car]) = cars.sortBy(_.price).map(_.brand)
-		</pre>
-	</article>
-</slide>
-
-<slide>
-	<hgroup>
-		<h2>Exercises</h2>
-	</hgroup>
-	<article>
-		<ul>
-			<li>Ex3_LambdaWithStreams</li>
-			<li>Ex4_LambdaWithParallelStreams</li>
-		</ul>
-	</article>
-</slide>
-
-<slide>
-	<hgroup>
-		<h2>Optional</h2>
-	</hgroup>
-	<article class="smaller">
-		<ul>
-			<li>public Person(String name)</li>
-			<li>public House(Person owner)</li>
-		</ul>
-            <pre class="prettyprint" data-lang="Java 7">
-public static String getNameOfOwner(House house) {
-  if (house != null && house.owner != null && house.owner.name != null) {
-    return house.owner.name;
-  } else {
-    return "Doesn't exist";
-  }
-}
-            </pre>
-            <pre class="prettyprint" data-lang="Java 8">
-public static String getNameOfOwner(House house) {
-  return Optional.of(house).map(h -> h.owner).map(p -> p.name).orElseGet(() -> "Doesn't exist");
-}
-            </pre>
-	</article>
-</slide>
-
-<slide>
-	<hgroup>
-		<h2>Exercises</h2>
-	</hgroup>
-	<article>
-		<ul>
-			<li>Ex5_Optional</li>
-		</ul>
-	</article>
-</slide>
-
-<slide>
-    <hgroup>
-        <h2>Scope</h2>
-    </hgroup>
-    <article class="smaller">
-        <ul>
-            <li></li>
-        </ul>
+	<slide>
+		<hgroup>
+			<h2>Scope</h2>
+		</hgroup>
+		<article class="smaller">
+			<ul>
+				<li></li>
+			</ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ScopeExampleJava {
     @FunctionalInterface interface Function0 { public void apply();}
@@ -441,17 +664,17 @@ class ScopeExampleScala {
       println(num) // prints 3
     })()}}
             </pre>
-    </article>
-</slide>
+		</article>
+	</slide>
 
-<slide>
-    <hgroup>
-        <h2>Closures</h2>
-    </hgroup>
-    <article class="smaller">
-        <ul>
-            <li></li>
-        </ul>
+	<slide>
+		<hgroup>
+			<h2>Closures</h2>
+		</hgroup>
+		<article class="smaller">
+			<ul>
+				<li></li>
+			</ul>
             <pre class="prettyprint" data-lang="Java 8">
 public class ClosureExampleJava {
     @FunctionalInterface interface Function0 { public void apply();}
@@ -477,51 +700,39 @@ class ClosureExampleScala {
       println(num) // prints 3
     })()}}
             </pre>
-    </article>
-</slide>
+		</article>
+	</slide>
 
-<slide>
-	<hgroup>
-		<h2>Exercises</h2>
-	</hgroup>
-	<article>
-		<ul>
-			<li>Ex6_CompetingTypes</li>
-			<li>Ex7_Computers (Scala only)</li>
-		</ul>
-	</article>
-</slide>
+	<slide class="thank-you-slide segue nobackground">
+		<aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>
+		<article class="flexbox vleft auto-fadein">
+			<h2>Thank You!</h2>
 
-<slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/BEKK_logo.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-        <h2>Thank You!</h2>
+			<p>Source: <a href="https://github.com/matiasvinjevoll/java8-scala-workshop">https://github.com/matiasvinjevoll/java8-scala-workshop</a>
+			</p>
+		</article>
+		<p class="auto-fadein" data-config-contact>
+			<!-- populated from slide_config.json -->
+		</p>
+	</slide>
 
-        <p>Source: <a href="https://github.com/matiasvinjevoll/java8-scala-workshop">https://github.com/matiasvinjevoll/java8-scala-workshop</a>
-        </p>
-    </article>
-    <p class="auto-fadein" data-config-contact>
-        <!-- populated from slide_config.json -->
-    </p>
-</slide>
-
-<slide class="backdrop"></slide>
+	<slide class="backdrop"></slide>
 
 </slides>
 
 <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
-    _gaq.push(['_trackPageview']);
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+	_gaq.push(['_trackPageview']);
 
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
 </script>
 
 <!--[if IE]>

@@ -11,14 +11,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class Ex4_LambdaWithParallelStreamsTest {
+public class Ex4_LambdaOnParallelCollectionsTest {
 
 	@Test
 	public void testTeamsWithValueHigherThan() {
 		List<Team> teams = asList(manchesterUnited, liverpool, arsenal, borussiaDortmund, atleticoMadrid);
 
 		long before = System.currentTimeMillis();
-		List<Team> teamsWithHigherValueThan1B = Ex4_LambdaWithParallelStreams.teamsWithValueHigherThan(1_000_000_000.0, teams);
+		List<Team> teamsWithHigherValueThan1B = Ex4_LambdaOnParallelCollections.teamsWithValueHigherThan(1_000_000_000.0, teams);
 		long after = System.currentTimeMillis();
 		long totalTime = after - before;
 

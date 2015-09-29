@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import static java.util.stream.Collectors.toList;
 import static no.bekk.java.util.Utils.implementThis;
 
-public class Ex4_LambdaWithParallelStreams {
+public class Ex4_LambdaOnParallelCollections {
 
 	static List<Team> teamsWithValueHigherThan(Double value, List<Team> teams) {
 		return implementThis();

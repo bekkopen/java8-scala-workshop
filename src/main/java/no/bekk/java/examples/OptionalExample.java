@@ -7,7 +7,7 @@ public class OptionalExample {
 	static class Java8 {
 
 		public static String getNameOfOwner(House house) {
-			return Optional.of(house).map(h -> h.owner).map(p -> p.name).orElseGet(() -> "Doesn't exist");
+			return Optional.of(house).map(House::getOwner).map(Person::getName).orElseGet(() -> "Doesn't exist");
 		}
 
 	}
@@ -31,6 +31,10 @@ class Person {
 	public Person(String name) {
 		this.name = name;
 	}
+
+	public String getName() {
+		return name;
+	}
 }
 
 class House {
@@ -38,5 +42,9 @@ class House {
 
 	public House(Person owner) {
 		this.owner = owner;
+	}
+
+	public Person getOwner() {
+		return owner;
 	}
 }
