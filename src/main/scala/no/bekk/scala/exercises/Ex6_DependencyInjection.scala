@@ -2,11 +2,17 @@ package no.bekk.scala.exercises
 
 object Ex6_DependencyInjection {
 
-	// A computer with Intel CPU, Asus motherboard, and Corsair memory
-	def computer1: Computer = (new ComputerContext with IntelCpuContext with AsusMotherboardContext with CorsairMemoryContext).computer
+	// A computer with Intel CPU, Asus motherboard, and Corsair memory:
+	def computer1: Computer = {
+		// new ComputerContext with ...
+		???
+	}
 
-	// A computer with AMD CPU, MSI motherboard and Kingston memory
-	def computer2: Computer = (new ComputerContext with AmdCpuContext with MsiMotherboardContext with KingstonMemoryContext).computer
+	// A computer with AMD CPU, MSI motherboard and Kingston memory:
+	def computer2: Computer = {
+		//new ComputerContext with ...
+		???
+	}
 }
 
 trait CpuContext {

@@ -1,17 +1,19 @@
 package no.bekk.java.exercises;
 
+import static no.bekk.java.util.Utils.implementThis;
+
 public class Ex6_DependencyInjection {
 
 	static Computer computer1() {
-		// A computer with Intel CPU, Asus motherboard, and Corsair memory
-		class Computer1Context implements ComputerContext, IntelCpuContext, AsusMotherboardContext, CorsairMemoryContext {}
-		return new Computer1Context().getComputer();
+		// A computer with Intel CPU, Asus motherboard, and Corsair memory:
+		//class Computer1Context implements ComputerContext ...
+		return implementThis();
 	}
 
 	static Computer computer2() {
-		// A computer with AMD CPU, MSI motherboard and Kingston memory
-		class Computer2Context implements ComputerContext, AmdCpuContext, MsiMotherboardContext, KingstonMemoryContext {}
-		return new Computer2Context().getComputer();
+		// A computer with AMD CPU, MSI motherboard and Kingston memory:
+		//class Computer2Context implements ComputerContext ...
+		return implementThis();
 	}
 }
 

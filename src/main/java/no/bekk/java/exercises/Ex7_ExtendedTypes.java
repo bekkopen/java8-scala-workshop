@@ -4,13 +4,15 @@ import no.bekk.java.model.Car;
 
 import java.util.List;
 
+import static no.bekk.java.util.Utils.implementThis;
+
 interface Competing<T> {
 	T get();
 	Competing<T> competeWith(Competing<T> other);
 }
 public class Ex7_ExtendedTypes {
 	static public <T> T compete(List<Competing<T>> competitors) {
-		return competitors.stream().reduce((x, y) -> x.competeWith(y)).get().get(); // TODO: Remove for excercise
+		return implementThis();
 	}
 }
 
@@ -25,6 +27,6 @@ class CarAdapter implements Competing<Car> {
 	public Car get() {return car;}
 
 	public Competing<Car> competeWith(Competing<Car> other) {
-		return car.hp > other.get().hp ? this : other;
+		return implementThis();
 	}
 }

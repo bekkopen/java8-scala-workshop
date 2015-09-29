@@ -4,6 +4,8 @@ import no.bekk.java.model.League;
 import no.bekk.java.model.Player;
 import no.bekk.java.model.Team;
 
+import static no.bekk.java.util.Utils.*;
+
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -11,36 +13,26 @@ import java.util.function.Predicate;
 public class Ex1_Lambda {
 
 	public static Function<Player, String> playerName() {
-		return Player::getName;
+		return implementThis();
 	}
 
 	public static Function<Player, Integer> playerAge() {
-		return Player::getAge;
+		return implementThis();
 	}
 
 	public static Predicate<Player> isOlderThan(Integer age) {
-		return p -> p.getAge() > age;
+		return implementThis();
 	}
 
 	static BinaryOperator<Player> youngestPlayer() {
-
-		return (x, y) -> {
-			if (x.birthDate.isAfter(y.birthDate)) return x;
-			else return y;
-		};
+		return implementThis();
 	}
 
 	static BinaryOperator<Team> highestTeamValue() {
-		return (x, y) -> {
-			if (x.value > y.value) return x;
-			else return y;
-		};
+		return implementThis();
 	}
 
 	static BinaryOperator<League> longestLeagueName() {
-		return (x, y) -> {
-			if (x.getName().length() > y.getName().length()) return x;
-			else return y;
-		};
+		return implementThis();
 	}
 }
